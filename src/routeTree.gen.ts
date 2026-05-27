@@ -11,9 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as SignInRouteImport } from './routes/sign-in'
+import { Route as SearchRouteImport } from './routes/search'
 import { Route as RequestAccessRouteImport } from './routes/request-access'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as BookmarksRouteImport } from './routes/bookmarks'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AdminSetupRouteImport } from './routes/admin-setup'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -30,6 +32,11 @@ const SignInRoute = SignInRouteImport.update({
   path: '/sign-in',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestAccessRoute = RequestAccessRouteImport.update({
   id: '/request-access',
   path: '/request-access',
@@ -43,6 +50,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BookmarksRoute = BookmarksRouteImport.update({
+  id: '/bookmarks',
+  path: '/bookmarks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -76,9 +88,11 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRoute
   '/admin-setup': typeof AdminSetupRoute
   '/auth': typeof AuthRoute
+  '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
   '/support': typeof SupportRoute
   '/revise/$setId': typeof ReviseSetIdRoute
@@ -88,9 +102,11 @@ export interface FileRoutesByTo {
   '/admin': typeof AdminRoute
   '/admin-setup': typeof AdminSetupRoute
   '/auth': typeof AuthRoute
+  '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
   '/support': typeof SupportRoute
   '/revise/$setId': typeof ReviseSetIdRoute
@@ -101,9 +117,11 @@ export interface FileRoutesById {
   '/admin': typeof AdminRoute
   '/admin-setup': typeof AdminSetupRoute
   '/auth': typeof AuthRoute
+  '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
+  '/search': typeof SearchRoute
   '/sign-in': typeof SignInRoute
   '/support': typeof SupportRoute
   '/revise/$setId': typeof ReviseSetIdRoute
@@ -115,9 +133,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin-setup'
     | '/auth'
+    | '/bookmarks'
     | '/dashboard'
     | '/profile'
     | '/request-access'
+    | '/search'
     | '/sign-in'
     | '/support'
     | '/revise/$setId'
@@ -127,9 +147,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin-setup'
     | '/auth'
+    | '/bookmarks'
     | '/dashboard'
     | '/profile'
     | '/request-access'
+    | '/search'
     | '/sign-in'
     | '/support'
     | '/revise/$setId'
@@ -139,9 +161,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin-setup'
     | '/auth'
+    | '/bookmarks'
     | '/dashboard'
     | '/profile'
     | '/request-access'
+    | '/search'
     | '/sign-in'
     | '/support'
     | '/revise/$setId'
@@ -152,9 +176,11 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRoute
   AdminSetupRoute: typeof AdminSetupRoute
   AuthRoute: typeof AuthRoute
+  BookmarksRoute: typeof BookmarksRoute
   DashboardRoute: typeof DashboardRoute
   ProfileRoute: typeof ProfileRoute
   RequestAccessRoute: typeof RequestAccessRoute
+  SearchRoute: typeof SearchRoute
   SignInRoute: typeof SignInRoute
   SupportRoute: typeof SupportRoute
   ReviseSetIdRoute: typeof ReviseSetIdRoute
@@ -176,6 +202,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignInRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/request-access': {
       id: '/request-access'
       path: '/request-access'
@@ -195,6 +228,13 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bookmarks': {
+      id: '/bookmarks'
+      path: '/bookmarks'
+      fullPath: '/bookmarks'
+      preLoaderRoute: typeof BookmarksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -240,9 +280,11 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRoute,
   AdminSetupRoute: AdminSetupRoute,
   AuthRoute: AuthRoute,
+  BookmarksRoute: BookmarksRoute,
   DashboardRoute: DashboardRoute,
   ProfileRoute: ProfileRoute,
   RequestAccessRoute: RequestAccessRoute,
+  SearchRoute: SearchRoute,
   SignInRoute: SignInRoute,
   SupportRoute: SupportRoute,
   ReviseSetIdRoute: ReviseSetIdRoute,

@@ -370,7 +370,9 @@ function ContentPanel() {
       <Card className="p-6 bg-card text-card-foreground">
         <h3 className="font-semibold mb-3">Add card</h3>
         <p className="text-xs text-muted-foreground mb-2">
-          Math: wrap inline math in <code>$...$</code> and block math in <code>$$...$$</code>. ASCII diagrams: wrap in triple backticks.
+          Math: wrap inline in <code>$...$</code>, block in <code>$$...$$</code>. ASCII art: triple backticks.
+          Real SVG diagrams: <code>```diagram closed-loop```</code>. Available:
+          closed-loop, open-loop, dcs-pyramid, pneumatic-valve, butterfly-valve, bode, nyquist, root-locus, plc-architecture.
         </p>
         <div className="space-y-2">
           <div><Label>Question</Label><textarea value={q} onChange={e => setQ(e.target.value)} rows={2} className="w-full rounded-md border border-input bg-background text-foreground p-2 text-sm" /></div>

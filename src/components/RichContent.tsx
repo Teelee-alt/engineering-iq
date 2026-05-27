@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.min.css";
+import { Diagram } from "@/components/Diagrams";
 
 /**
  * Renders flashcard content with full Markdown + GFM tables + LaTeX math support.
@@ -42,16 +43,28 @@ export function RichContent({ text }: { text: string }) {
             if (isInline) {
               return <code className="px-1.5 py-0.5 rounded bg-muted/60 text-sm font-mono" {...p}>{children}</code>;
             }
+            // Diagram block: ```diagram closed-loop  (info string starts with "diagram")
+            const m = /^language-diagram(?:[-_\s]+(.+))?$/.exec(className || "");
+            if (m) {
+              const raw = String(children).trim();
+              const name = (m[1] || raw.split(/\s+/)[0] || "").trim();
+              return <Diagram name={name} />;
+            }
             return <code className={className} {...p}>{children}</code>;
           },
-          pre: ({ node, children, ...p }) => (
-            <pre
-              className="rounded-md bg-muted/50 border border-border/50 p-3 my-3 text-xs md:text-sm font-mono overflow-x-auto whitespace-pre leading-snug"
-              {...p}
-            >
-              {children}
-            </pre>
-          ),
+          pre: ({ node, children, ...p }: any) => {
+            const child: any = Array.isArray(children) ? children[0] : children;
+            const cls = child?.props?.className || "";
+            if (/^language-diagram/.test(cls)) return <>{children}</>;
+            return (
+              <pre
+                className="rounded-md bg-muted/50 border border-border/50 p-3 my-3 text-xs md:text-sm font-mono overflow-x-auto whitespace-pre leading-snug"
+                {...p}
+              >
+                {children}
+              </pre>
+            );
+          },
           table: ({ node, ...p }) => (
             <div className="my-4 overflow-x-auto rounded-md border border-border/60">
               <table className="w-full text-sm border-collapse" {...p} />
