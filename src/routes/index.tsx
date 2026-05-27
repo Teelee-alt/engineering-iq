@@ -16,7 +16,9 @@ function Landing() {
     supabase.from("app_settings").select("primary_agent_name, solo_amount, pair_amount").eq("id", true).maybeSingle()
       .then(({ data }) => data && setSettings(data as any));
   }, []);
-  const agent = settings?.primary_agent_name ?? "Contact admin for agent details";
+  const DEFAULT_AGENT_PLACEHOLDER = "Contact admin for agent details";
+  const agentRaw = settings?.primary_agent_name?.trim();
+  const agent = agentRaw && agentRaw !== DEFAULT_AGENT_PLACEHOLDER ? agentRaw : null;
   const solo = settings?.solo_amount ?? 5;
   const pair = settings?.pair_amount ?? 8;
   return (
@@ -128,9 +130,11 @@ function Landing() {
               </div>
             </div>
             <p className="text-center mt-6 text-sm text-muted-foreground">Pay any authorised agent in cash. No card. No online payment.</p>
-            <div className="mt-6 rounded-lg border border-secondary/40 bg-secondary/5 p-4 flex items-center justify-center gap-2 text-sm">
-              <UserCheck className="h-4 w-4 text-secondary" />
-              <span className="text-foreground">Authorised agent: <strong>{agent}</strong></span>
+            <div className="mt-6 rounded-lg border border-secondary/40 bg-secondary/5 p-4 flex items-center justify-center gap-2 text-sm text-center">
+              <UserCheck className="h-4 w-4 text-secondary shrink-0" />
+              {agent
+                ? <span className="text-foreground">Authorised agent: <strong>{agent}</strong></span>
+                : <span className="text-muted-foreground">Admin will name your authorised agent after you submit a request.</span>}
             </div>
           </Card>
         </section>
