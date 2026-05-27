@@ -1,0 +1,172 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
+import { AppHeader } from "@/components/AppHeader";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Cpu, KeyRound, Sparkles, Mail, BookOpen, Zap, Trophy, Brain, Clock, CheckCircle2, Download, UserPlus, UserCheck } from "lucide-react";
+import logo from "@/assets/logo.png";
+import { InstallAppButton } from "@/components/InstallAppButton";
+import { supabase } from "@/integrations/supabase/client";
+
+export const Route = createFileRoute("/")({ component: Landing });
+
+function Landing() {
+  const [settings, setSettings] = useState<{ primary_agent_name: string; solo_amount: number; pair_amount: number } | null>(null);
+  useEffect(() => {
+    supabase.from("app_settings").select("primary_agent_name, solo_amount, pair_amount").eq("id", true).maybeSingle()
+      .then(({ data }) => data && setSettings(data as any));
+  }, []);
+  const agent = settings?.primary_agent_name ?? "Contact admin for agent details";
+  const solo = settings?.solo_amount ?? 5;
+  const pair = settings?.pair_amount ?? 8;
+  return (
+    <div className="min-h-screen bg-hero">
+      <AppHeader />
+      <main>
+        {/* HERO */}
+        <section className="container mx-auto px-4 pt-16 pb-12 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-xs text-secondary mb-6">
+            <Zap className="h-3 w-3" /> Built from real National Diploma past papers
+          </div>
+          <img src={logo} alt="Industrial Automation logo" className="mx-auto h-28 w-auto mb-6 drop-shadow-[0_0_60px_rgba(99,102,241,0.55)]" />
+          <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-tight text-white">
+            Stop re-reading notes.<br />
+            <span className="text-brand-gradient">Start passing Automation.</span>
+          </h1>
+          <p className="mt-5 max-w-2xl mx-auto text-lg text-white/80">
+            Every concept that has ever appeared in your exam, rebuilt as flip-cards your brain actually remembers.
+            <strong className="text-white"> First 5 cards of every topic are free.</strong> No card. No setup. No catch.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button asChild size="lg" className="bg-brand-gradient text-primary-foreground shadow-glow text-base">
+              <Link to="/request-access"><UserPlus className="h-4 w-4 mr-1" /> Request Access</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="text-white border-white/40 hover:bg-white/10 hover:text-white">
+              <Link to="/sign-in"><KeyRound className="h-4 w-4 mr-1" /> I have a code</Link>
+            </Button>
+            <InstallAppButton />
+
+          </div>
+          <div className="mt-6 flex flex-wrap justify-center items-center gap-x-6 gap-y-2 text-xs text-white/70">
+            <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-secondary" /> No subscription</span>
+            <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-secondary" /> No exam dates, ever</span>
+            <span className="flex items-center gap-1"><CheckCircle2 className="h-3 w-3 text-secondary" /> Works offline once installed</span>
+          </div>
+        </section>
+
+        {/* PAIN _ AGITATE */}
+        <section className="container mx-auto px-4 py-12">
+          <Card className="p-8 md:p-12 bg-card text-card-foreground shadow-card-elev">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="text-3xl font-bold mb-4">You already know what's coming.</h2>
+                <p className="text-muted-foreground">
+                  The same Boolean simplifications. The same Laplace transforms. The same partial fraction tricks.
+                  The same five sensors, the same PLC ladder, the same hydraulic schematic. Year after year.
+                </p>
+                <p className="mt-4 font-semibold">
+                  The students who pass aren't smarter. <span className="text-brand-gradient">They've just seen the questions before.</span>
+                </p>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  { i: Brain, n: "75+", l: "cards drawn from real papers" },
+                  { i: Trophy, n: "100%", l: "model-answer accuracy" },
+                  { i: Clock, n: "15 min", l: "a day is enough" },
+                  { i: BookOpen, n: "5", l: "complete past paper sets" },
+                ].map(({ i: Icon, n, l }) => (
+                  <div key={l} className="rounded-xl border border-black/20 p-4 text-center bg-white">
+                    <Icon className="h-5 w-5 mx-auto text-secondary mb-2" />
+                    <p className="text-2xl font-bold text-black">{n}</p>
+                    <p className="text-xs text-black mt-1">{l}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Card>
+        </section>
+
+        {/* HOW */}
+        <section className="container mx-auto px-4 py-12">
+          <h2 className="text-3xl font-bold text-center mb-2 text-white">From confused to confident in 3 steps</h2>
+          <p className="text-center text-white/70 mb-10">No downloads required. No setup. Open and revise.</p>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { i: Sparkles, t: "1. Request access", d: "Enter your full name, WhatsApp number and email. The system needs your email to send your access code." },
+              { i: KeyRound, t: "2. Pay an agent", d: `Hand over $${solo} (solo) or $${pair} (two of you together) to an authorised agent. Agent calls admin with your name. Admin approves.` },
+              { i: Cpu, t: "3. Get code by email", d: "Your access code arrives by email. Sign in with your full name + code, every card unlocks. Install to your phone and revise offline." },
+            ].map(({ i: Icon, t, d }) => (
+              <Card key={t} className="p-6 bg-card text-card-foreground shadow-card-elev hover:border-secondary transition border-2 border-transparent">
+                <div className="h-12 w-12 rounded-lg bg-brand-gradient flex items-center justify-center mb-4">
+                  <Icon className="h-6 w-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-semibold text-lg">{t}</h3>
+                <p className="text-muted-foreground mt-2 text-sm">{d}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* PRICE */}
+        <section className="container mx-auto px-4 py-12">
+          <Card className="p-10 bg-card text-card-foreground shadow-card-elev">
+            <h2 className="text-3xl font-bold text-center">Cheaper than a rewrite.</h2>
+            <p className="text-center text-muted-foreground mt-2">Pay once. Keep access till end of exam. No monthly anything.</p>
+            <div className="grid md:grid-cols-2 gap-6 mt-8">
+              <div className="rounded-xl border-2 border-border p-6 text-center">
+                <p className="text-sm uppercase tracking-wider text-muted-foreground">Solo</p>
+                <p className="text-5xl font-bold mt-2">${solo}</p>
+                <p className="text-sm text-muted-foreground mt-2">One individual, full access</p>
+              </div>
+              <div className="rounded-xl border-2 border-secondary p-6 text-center bg-secondary/5 relative">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 text-xs bg-secondary text-secondary-foreground px-2 py-0.5 rounded-full font-semibold">BEST VALUE</span>
+                <p className="text-sm uppercase tracking-wider text-secondary">Pair (sign up together)</p>
+                <p className="text-5xl font-bold mt-2">${pair}</p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  Two new users, registered together. Save together when you sign up as a pair.
+                </p>
+              </div>
+            </div>
+            <p className="text-center mt-6 text-sm text-muted-foreground">Pay any authorised agent in cash. No card. No online payment.</p>
+            <div className="mt-6 rounded-lg border border-secondary/40 bg-secondary/5 p-4 flex items-center justify-center gap-2 text-sm">
+              <UserCheck className="h-4 w-4 text-secondary" />
+              <span className="text-foreground">Authorised agent: <strong>{agent}</strong></span>
+            </div>
+          </Card>
+        </section>
+
+
+
+
+        {/* TRUST */}
+        <section className="container mx-auto px-4 py-12">
+          <div className="grid sm:grid-cols-3 gap-4 text-sm">
+            {[
+              { i: BookOpen, t: "Real exam content", d: "Five full past paper sets, model answers verified." },
+              { i: Download, t: "Install on phone", d: "Add to home screen, revise even offline." },
+              { i: Mail, t: "Real human support", d: "edusannaonlinelearning@gmail.com" },
+            ].map(({ i: Icon, t, d }) => (
+              <Card key={t} className="p-4 bg-card text-card-foreground">
+                <Icon className="h-5 w-5 text-secondary mb-2" />
+                <p className="font-semibold">{t}</p>
+                <p className="text-xs text-muted-foreground mt-1">{d}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* FINAL CTA */}
+        <section className="container mx-auto px-4 py-16 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">Your future self is begging you to start.</h2>
+          <p className="text-white/70 mt-3 max-w-xl mx-auto">5 free cards per topic. No code needed. Click. Request access. Revise.</p>
+          <Button asChild size="lg" className="mt-6 bg-brand-gradient text-primary-foreground shadow-glow">
+            <Link to="/request-access">Request Access</Link>
+          </Button>
+        </section>
+      </main>
+      <footer className="border-t border-border/40 mt-6 py-8 text-center text-sm text-white/60">
+        © Industrial Automation. Automate · Control · Optimize · Innovate.
+      </footer>
+    </div>
+  );
+}
