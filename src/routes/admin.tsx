@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
-import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle } from "lucide-react";
+import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle, Upload } from "lucide-react";
 import { approveAccessRequest, rejectAccessRequest, resendAccessCodeEmail } from "@/lib/access.functions";
 
 export const Route = createFileRoute("/admin")({ component: Admin });
@@ -381,6 +381,8 @@ function ContentPanel() {
         </div>
       </Card>
 
+      <BulkImportCard activeSet={activeSet} existingCount={cards.length} onImported={loadCards} />
+
       <Card className="p-0 bg-card text-card-foreground overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-muted/40"><tr><th className="text-left p-3 w-12">#</th><th className="text-left p-3">Question</th><th className="w-32"></th></tr></thead>
@@ -417,6 +419,182 @@ function ContentPanel() {
     </div>
   );
 
+}
+
+// _____________________________________________________________________________
+// Bulk-import cards from a pasted Markdown block.
+// Supported formats (parser is liberal _ asterisks/bold/numbering are stripped):
+//
+//   Q: What is Ohm's law?
+//   A: V = I * R. Voltage equals current times resistance.
+//
+//   Q: Define a transducer.
+//   A: A device that converts one form of energy to another.
+//
+// Separator lines (---, ===, blank lines) are optional. Markdown bold (**...**),
+// italic (*...* / _..._) and leading list markers (1., -, *) are auto-removed
+// from the *delimiters* but preserved inside the answer body so diagrams,
+// tables and math survive intact.
+function parseMarkdownCards(input: string): { question: string; answer: string }[] {
+  const cards: { question: string; answer: string }[] = [];
+  // Normalise line endings and split.
+  const lines = input.replace(/\r\n?/g, "\n").split("\n");
+
+  // Helper: strip bold/italic markers and leading list markers from a label line
+  const cleanLabel = (s: string) =>
+    s
+      .replace(/^\s*[-*+]\s+/, "") // list markers
+      .replace(/^\s*\d+[.)]\s+/, "") // numbered list
+      .replace(/\*\*/g, "")
+      .replace(/__/g, "")
+      .replace(/^\s*#+\s*/, "")
+      .trim();
+
+  let current: { question: string[]; answer: string[]; mode: "q" | "a" | null } = {
+    question: [],
+    answer: [],
+    mode: null,
+  };
+
+  const flush = () => {
+    const q = current.question.join("\n").trim();
+    const a = current.answer.join("\n").trim();
+    if (q && a) cards.push({ question: q, answer: a });
+    current = { question: [], answer: [], mode: null };
+  };
+
+  const qRe = /^\s*(?:\*\*|__)?\s*(?:Q(?:uestion)?|\d+[.)])\s*[:.\-]\s*(.*)$/i;
+  const aRe = /^\s*(?:\*\*|__)?\s*A(?:nswer)?\s*[:.\-]\s*(.*)$/i;
+
+  for (const rawLine of lines) {
+    const line = rawLine;
+    const trimmed = line.trim();
+
+    // Hard separator => commit current card
+    if (/^(?:---+|===+|\*\*\*+)$/.test(trimmed)) {
+      flush();
+      continue;
+    }
+
+    const qMatch = line.match(qRe);
+    const aMatch = line.match(aRe);
+
+    if (qMatch) {
+      // New question starts: flush previous card if it had both parts.
+      flush();
+      current.mode = "q";
+      const rest = cleanLabel(qMatch[1] ?? "");
+      if (rest) current.question.push(rest);
+      continue;
+    }
+    if (aMatch) {
+      current.mode = "a";
+      const rest = (aMatch[1] ?? "").replace(/\*\*/g, "").replace(/__/g, "").trim();
+      if (rest) current.answer.push(rest);
+      continue;
+    }
+
+    if (current.mode === "q") current.question.push(line);
+    else if (current.mode === "a") current.answer.push(line);
+    // lines before any Q: are ignored (preamble)
+  }
+  flush();
+  return cards;
+}
+
+function BulkImportCard({
+  activeSet,
+  existingCount,
+  onImported,
+}: {
+  activeSet: string;
+  existingCount: number;
+  onImported: () => void;
+}) {
+  const [text, setText] = useState("");
+  const [busy, setBusy] = useState(false);
+
+  const preview = parseMarkdownCards(text);
+
+  const importCards = async () => {
+    if (!activeSet) return toast.error("Pick a topic set first.");
+    if (preview.length === 0) return toast.error("No Q/A pairs detected. Use 'Q:' and 'A:' labels.");
+    setBusy(true);
+    const rows = preview.map((c, i) => ({
+      topic_set_id: activeSet,
+      question: c.question,
+      answer: c.answer,
+      order_index: existingCount + i + 1,
+    }));
+    const { error } = await supabase.from("cards").insert(rows);
+    setBusy(false);
+    if (error) return toast.error(error.message);
+    toast.success(`Imported ${rows.length} card${rows.length > 1 ? "s" : ""}`);
+    setText("");
+    onImported();
+  };
+
+  return (
+    <Card className="p-6 bg-card text-card-foreground border-secondary/30">
+      <div className="flex items-center justify-between flex-wrap gap-3 mb-3">
+        <div>
+          <h3 className="font-semibold flex items-center gap-2"><Upload className="h-4 w-4 text-secondary" /> Bulk-import from Markdown</h3>
+          <p className="text-xs text-muted-foreground mt-1">
+            Paste a whole exam paper. Asterisks/bold are stripped automatically. Diagrams and tables in the
+            answer body are kept intact. Each card needs a <code>Q:</code> and <code>A:</code> label.
+          </p>
+        </div>
+        <Badge variant={preview.length > 0 ? "default" : "outline"}>
+          {preview.length} card{preview.length === 1 ? "" : "s"} detected
+        </Badge>
+      </div>
+
+      <details className="mb-3 text-xs text-muted-foreground">
+        <summary className="cursor-pointer hover:text-foreground">Example format (click to expand)</summary>
+        <pre className="mt-2 p-3 bg-muted/30 rounded text-xs whitespace-pre-wrap">{`Q: State Ohm's law.
+A: V = I R. The voltage across a resistor equals the current through it times its resistance.
+
+Q: Define a transducer.
+A: A device that converts one form of energy to another, e.g. a thermocouple converts heat into an EMF.
+
+---
+
+Q: Draw the closed-loop block diagram.
+A: \`\`\`diagram closed-loop\`\`\`
+The setpoint R(s) goes into a summing junction; the error E(s) drives the controller and plant G(s); H(s) feeds the output back.`}</pre>
+      </details>
+
+      <textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        rows={12}
+        placeholder="Paste your exam paper here..."
+        className="w-full rounded-md border border-input bg-background text-foreground p-2 text-sm font-mono"
+      />
+
+      {preview.length > 0 && (
+        <div className="mt-3 p-3 rounded bg-muted/20 max-h-48 overflow-auto text-xs">
+          <div className="font-semibold mb-2">Preview</div>
+          {preview.slice(0, 5).map((c, i) => (
+            <div key={i} className="mb-2 pb-2 border-b border-border/40 last:border-0">
+              <div><strong>Q{i + 1}:</strong> {c.question.slice(0, 120)}{c.question.length > 120 ? "..." : ""}</div>
+              <div className="text-muted-foreground"><strong>A:</strong> {c.answer.slice(0, 160)}{c.answer.length > 160 ? "..." : ""}</div>
+            </div>
+          ))}
+          {preview.length > 5 && <div className="text-muted-foreground">...and {preview.length - 5} more</div>}
+        </div>
+      )}
+
+      <div className="flex gap-2 mt-3">
+        <Button onClick={importCards} disabled={busy || preview.length === 0} className="bg-brand-gradient">
+          <Upload className="h-4 w-4 mr-1" /> Import {preview.length > 0 ? `${preview.length} card${preview.length === 1 ? "" : "s"}` : ""}
+        </Button>
+        <Button variant="outline" onClick={() => setText("")} disabled={busy || !text}>
+          <X className="h-4 w-4 mr-1" /> Clear
+        </Button>
+      </div>
+    </Card>
+  );
 }
 
 function UsersPanel() {
