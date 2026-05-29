@@ -1,3 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.js" }]
+  "functions": {
+    "dist/server/index.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
+  "rewrites": [{ "source": "/(.*)", "destination": "/dist/server/index.js" }]
 }
