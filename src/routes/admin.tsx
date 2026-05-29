@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle, Upload } from "lucide-react";
 import { approveAccessRequest, rejectAccessRequest, resendAccessCodeEmail } from "@/lib/access.functions";
+import { DeploymentPanel, UserManualPanel } from "@/components/admin/DeploymentManualPanels";
 
 export const Route = createFileRoute("/admin")({ component: Admin });
 
