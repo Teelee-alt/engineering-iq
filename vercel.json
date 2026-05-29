@@ -1,1 +1,3 @@
-npm install nitro
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
