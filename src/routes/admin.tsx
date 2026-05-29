@@ -41,6 +41,7 @@ function Admin() {
       <AppHeader showBack backTo="/dashboard" />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-white">Admin dashboard</h1>
+        <Tabs defaultValue="requests">
           <TabsList className="flex flex-wrap h-auto">
             <TabsTrigger value="requests">Access Requests</TabsTrigger>
             <TabsTrigger value="codes">Access Codes</TabsTrigger>
