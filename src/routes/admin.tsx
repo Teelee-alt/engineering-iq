@@ -14,6 +14,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle, Upload } from "lucide-react";
 import { approveAccessRequest, rejectAccessRequest, resendAccessCodeEmail } from "@/lib/access.functions";
+import { DeploymentPanel, UserManualPanel } from "@/components/admin/DeploymentManualPanels";
 
 export const Route = createFileRoute("/admin")({ component: Admin });
 
@@ -40,7 +41,6 @@ function Admin() {
       <AppHeader showBack backTo="/dashboard" />
       <main className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-white">Admin dashboard</h1>
-        <Tabs defaultValue="requests">
           <TabsList className="flex flex-wrap h-auto">
             <TabsTrigger value="requests">Access Requests</TabsTrigger>
             <TabsTrigger value="codes">Access Codes</TabsTrigger>
@@ -50,6 +50,8 @@ function Admin() {
             <TabsTrigger value="payments">Payments</TabsTrigger>
             <TabsTrigger value="agents">Agents</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
+            <TabsTrigger value="deploy">Deployment</TabsTrigger>
+            <TabsTrigger value="manual">User Manual</TabsTrigger>
           </TabsList>
           <TabsContent value="requests"><RequestsPanel /></TabsContent>
           <TabsContent value="codes"><CodesPanel /></TabsContent>
@@ -59,6 +61,8 @@ function Admin() {
           <TabsContent value="payments"><PaymentsPanel /></TabsContent>
           <TabsContent value="agents"><AgentsPanel /></TabsContent>
           <TabsContent value="settings"><SettingsPanel /></TabsContent>
+          <TabsContent value="deploy"><DeploymentPanel /></TabsContent>
+          <TabsContent value="manual"><UserManualPanel /></TabsContent>
         </Tabs>
       </main>
     </div>
