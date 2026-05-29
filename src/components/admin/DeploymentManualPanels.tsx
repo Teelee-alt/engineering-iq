@@ -6,6 +6,7 @@ import { Copy, ExternalLink, Rocket, BookOpen } from "lucide-react";
 
 const SUPABASE_URL = "https://sefwgqtthvrmwcnanncr.supabase.co";
 const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlZndncXR0aHZybXdjbmFubmNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5MTYxMTksImV4cCI6MjA5NTQ5MjExOX0.C9GDyGmdEDKoUW36471VYONTL-Q21oe-L4HTpuG-dr8";
+const SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlZndncXR0aHZybXdjbmFubmNyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTkxNjExOSwiZXhwIjoyMDk1NDkyMTE5fQ.JcpmmLi62yMr-TSLJGG5OHMp4o50wqDSIrTjLbUF7eg";
 const PROJECT_ID = "sefwgqtthvrmwcnanncr";
 
 function CopyRow({ label, value, secret }: { label: string; value: string; secret?: boolean }) {
@@ -43,11 +44,10 @@ export function DeploymentPanel() {
           <CopyRow label="VITE_SUPABASE_PROJECT_ID" value={PROJECT_ID} />
           <CopyRow label="SUPABASE_URL" value={SUPABASE_URL} />
           <CopyRow label="SUPABASE_PUBLISHABLE_KEY" value={SUPABASE_ANON} />
-          <CopyRow label="SUPABASE_SERVICE_ROLE_KEY" value="(get from Supabase Dashboard → Project Settings → API)" secret />
+          <CopyRow label="SUPABASE_SERVICE_ROLE_KEY" value={SUPABASE_SERVICE_ROLE_KEY} />
         </div>
         <p className="text-xs text-muted-foreground mt-2">
-          The service role key is sensitive — get it from your Supabase dashboard and paste into Vercel only.
-          Never commit it to GitHub.
+          The service role key is sensitive — paste it into Vercel only. Never commit it to a public repo.
         </p>
       </div>
 
