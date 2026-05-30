@@ -1,6 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -9,7 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
-import { signInWithCode } from "@/lib/access.functions";
+import { accessApi } from "@/lib/access-api";
 import { ArrowLeft, KeyRound, UserPlus } from "lucide-react";
 import logo from "@/assets/logo.png";
 
@@ -20,7 +19,6 @@ const REMEMBER_KEY = "ia_remember_v1";
 function SignInPage() {
   const { user, loading } = useAuth();
   const nav = useNavigate();
-  const resolve = useServerFn(signInWithCode);
 
   const [fullName, setFullName] = useState("");
   const [code, setCode] = useState("");
@@ -46,7 +44,7 @@ function SignInPage() {
     if (!fullName.trim() || !code.trim()) return toast.error("Enter your full name and access code");
     setBusy(true);
     try {
-      const creds = await resolve({ data: { full_name: fullName, code } });
+      const creds = await accessApi.signIn({ full_name: fullName, code });
       const { error } = await supabase.auth.signInWithPassword({
         email: creds.email,
         password: creds.password,

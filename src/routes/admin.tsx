@@ -1,6 +1,5 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { AppHeader } from "@/components/AppHeader";
 import { useAuth } from "@/hooks/use-auth";
 import { supabase } from "@/integrations/supabase/client";
@@ -13,7 +12,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle, Upload } from "lucide-react";
-import { approveAccessRequest, rejectAccessRequest, resendAccessCodeEmail } from "@/lib/access.functions";
+import { accessApi } from "@/lib/access-api";
 import { DeploymentPanel, UserManualPanel } from "@/components/admin/DeploymentManualPanels";
 
 export const Route = createFileRoute("/admin")({ component: Admin });
@@ -73,9 +72,6 @@ function Admin() {
 function RequestsPanel() {
   const [rows, setRows] = useState<any[]>([]);
   const [filter, setFilter] = useState<"pending" | "all">("pending");
-  const approveFn = useServerFn(approveAccessRequest);
-  const rejectFn = useServerFn(rejectAccessRequest);
-  const resendFn = useServerFn(resendAccessCodeEmail);
 
   const load = async () => {
     let q = supabase.from("access_requests").select("*").order("created_at", { ascending: false });
@@ -87,7 +83,7 @@ function RequestsPanel() {
 
   const approve = async (id: string) => {
     try {
-      const res = await approveFn({ data: { request_id: id } });
+      const res = await accessApi.approve({ request_id: id });
       if (res.email.sent) {
         toast.success(`Approved. Code ${res.code} emailed.`);
       } else {
@@ -99,14 +95,14 @@ function RequestsPanel() {
   };
   const resend = async (id: string) => {
     try {
-      const res = await resendFn({ data: { request_id: id } });
+      const res = await accessApi.resend({ request_id: id });
       if (res.email.sent) toast.success("Code re-emailed");
       else toast.warning(`Email not sent: ${res.email.reason}`);
     } catch (e: any) { toast.error(e?.message || "Resend failed"); }
   };
   const reject = async (id: string) => {
     if (!confirm("Reject this request?")) return;
-    try { await rejectFn({ data: { request_id: id } }); toast.success("Rejected"); load(); }
+    try { await accessApi.reject({ request_id: id }); toast.success("Rejected"); load(); }
     catch (e: any) { toast.error(e?.message || "Failed"); }
   };
   const del = async (id: string) => {
