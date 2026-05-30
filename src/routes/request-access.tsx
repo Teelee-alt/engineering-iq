@@ -1,12 +1,11 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { useServerFn } from "@tanstack/react-start";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
-import { submitAccessRequest } from "@/lib/access.functions";
+import { accessApi } from "@/lib/access-api";
 import { ArrowLeft, UserPlus, CheckCircle2, Mail, UserCheck } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { supabase } from "@/integrations/supabase/client";
@@ -14,7 +13,6 @@ import { supabase } from "@/integrations/supabase/client";
 export const Route = createFileRoute("/request-access")({ component: RequestAccessPage });
 
 function RequestAccessPage() {
-  const submit = useServerFn(submitAccessRequest);
   const nav = useNavigate();
   const [full_name, setName] = useState("");
   const [whatsapp, setWa] = useState("");
@@ -37,7 +35,7 @@ function RequestAccessPage() {
     }
     setBusy(true);
     try {
-      await submit({ data: { full_name, whatsapp, email } });
+      await accessApi.submit({ full_name, whatsapp, email });
       setDone(true);
       toast.success("Request submitted");
     } catch (e: any) {

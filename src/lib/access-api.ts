@@ -1,7 +1,7 @@
 // Thin wrapper around supabase.functions.invoke so call sites don't repeat error parsing.
 import { supabase } from "@/integrations/supabase/client";
 
-export async function callFn<T = any>(name: string, body: unknown): Promise<T> {
+export async function callFn<T = any>(name: string, body: Record<string, unknown>): Promise<T> {
   const { data, error } = await supabase.functions.invoke<T>(name, { body });
   if (error) {
     // Try to extract structured { error } JSON from the edge response.
