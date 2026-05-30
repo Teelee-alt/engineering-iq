@@ -31,24 +31,35 @@ export function DeploymentPanel() {
         <h2 className="text-xl font-semibold">Deploy to Vercel (GitHub)</h2>
       </div>
       <p className="text-sm text-muted-foreground">
-        This app uses Supabase directly. Push your code to GitHub, import the repo in Vercel,
+        This is a pure Vite SPA. Push your code to GitHub, import the repo in Vercel,
         then paste the environment variables below into <strong>Vercel → Project Settings → Environment Variables</strong>.
         Apply them to <em>Production, Preview, and Development</em>.
       </p>
 
       <div>
-        <h3 className="font-semibold mb-2">Required environment variables</h3>
+        <h3 className="font-semibold mb-2">Vercel environment variables (only these two)</h3>
         <div className="space-y-2">
           <CopyRow label="VITE_SUPABASE_URL" value={SUPABASE_URL} />
           <CopyRow label="VITE_SUPABASE_PUBLISHABLE_KEY" value={SUPABASE_ANON} />
-          <CopyRow label="VITE_SUPABASE_PROJECT_ID" value={PROJECT_ID} />
-          <CopyRow label="SUPABASE_URL" value={SUPABASE_URL} />
-          <CopyRow label="SUPABASE_PUBLISHABLE_KEY" value={SUPABASE_ANON} />
-          <CopyRow label="SUPABASE_SERVICE_ROLE_KEY" value={SUPABASE_SERVICE_ROLE_KEY} />
         </div>
         <p className="text-xs text-muted-foreground mt-2">
-          The service role key is sensitive — paste it into Vercel only. Never commit it to a public repo.
+          Vercel only hosts the static frontend — no server runtime. All sensitive logic (admin approve, email, signin)
+          runs in Supabase Edge Functions, which already have <code>SUPABASE_SERVICE_ROLE_KEY</code> set automatically.
         </p>
+      </div>
+
+      <div>
+        <h3 className="font-semibold mb-2">Supabase Edge Function secrets</h3>
+        <p className="text-sm text-muted-foreground mb-2">
+          Set these in <strong>Supabase Dashboard → Project Settings → Edge Functions → Secrets</strong>:
+        </p>
+        <div className="space-y-2">
+          <CopyRow label="RESEND_API_KEY (optional — enables emailing access codes)" value="re_••••••••••••" />
+        </div>
+        <p className="text-xs text-muted-foreground mt-2">
+          For reference, the service-role key (used internally by edge functions, do NOT put in Vercel):
+        </p>
+        <div className="mt-2"><CopyRow label="SUPABASE_SERVICE_ROLE_KEY" value={SUPABASE_SERVICE_ROLE_KEY} /></div>
       </div>
 
       <div className="space-y-2">
@@ -56,10 +67,11 @@ export function DeploymentPanel() {
         <ol className="list-decimal pl-5 text-sm space-y-1">
           <li>Push your project to a GitHub repository.</li>
           <li>Go to <a className="text-secondary underline" href="https://vercel.com/new" target="_blank" rel="noreferrer">vercel.com/new <ExternalLink className="inline h-3 w-3" /></a> and import the repo.</li>
-          <li>Framework Preset: <strong>Vite</strong>. Build command: <code>bun run build</code> (or <code>npm run build</code>). Output: <code>dist</code>.</li>
-          <li>Paste the env vars above (copy each with the button).</li>
+          <li>Framework Preset: <strong>Vite</strong>. Build command: <code>npm run build</code>. Output directory: <code>dist</code>.</li>
+          <li>Paste the two <code>VITE_*</code> env vars above into Vercel.</li>
           <li>Click Deploy. Add your custom domain under Settings → Domains.</li>
           <li>In Supabase Dashboard → Authentication → URL Configuration, add your Vercel domain to <strong>Site URL</strong> and <strong>Redirect URLs</strong>.</li>
+          <li>Deploy edge functions (one-time): <code>supabase functions deploy access-submit access-signin access-approve access-resend access-reject</code> — or the Lovable platform has already done this.</li>
         </ol>
       </div>
 
