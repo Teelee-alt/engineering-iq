@@ -37,30 +37,25 @@ export function escapeHtml(s: string) {
 }
 
 export async function sendCodeEmail(to: string, fullName: string, code: string) {
-  const key = Deno.env.get("RESEND_API_KEY");
-  if (!key) return { sent: false, reason: "RESEND_API_KEY not configured" };
-  const html = `
-    <div style="font-family:system-ui,sans-serif;max-width:560px;margin:0 auto;padding:24px;background:#0f172a;color:#fff;border-radius:12px">
-      <h1 style="margin:0 0 12px;font-size:22px">Welcome, ${escapeHtml(fullName)}</h1>
-      <p style="color:#cbd5e1;line-height:1.5">Your payment has been confirmed. Here is your access code:</p>
-      <div style="background:#1e293b;border:2px solid #6366f1;border-radius:10px;padding:18px;margin:18px 0;text-align:center;font-family:ui-monospace,monospace;font-size:22px;font-weight:700;letter-spacing:2px">${escapeHtml(code)}</div>
-      <p style="color:#cbd5e1;line-height:1.5">Open the app, click <strong>Sign in</strong>, enter your full name and this code.</p>
-    </div>`;
   try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: "Edusanna Online Learning <onboarding@resend.dev>",
-        to: [to],
-        subject: "Your Edusanna Online Learning access code",
-        html,
-      }),
-    });
+    // Send email via edge function that uses Supabase's native SMTP
+    const res = await fetch(
+      `${Deno.env.get("SUPABASE_URL")}/functions/v1/send-access-email`,
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ to, fullName, code }),
+      }
+    );
+
     if (!res.ok) {
       const body = await res.text();
-      return { sent: false, reason: `Resend error ${res.status}: ${body.slice(0, 200)}` };
+      return { sent: false, reason: `Email send failed: ${body.slice(0, 200)}` };
     }
+
     return { sent: true };
   } catch (e) {
     return { sent: false, reason: (e as Error).message };

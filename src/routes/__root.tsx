@@ -1,5 +1,11 @@
 import { QueryClient } from "@tanstack/react-query";
 import { Outlet, createRootRouteWithContext, useRouter, Link } from "@tanstack/react-router";
+import { useOfflineDetector } from "@/hooks/use-offline";
+
+function RootComponent() {
+  useOfflineDetector();
+  return <Outlet />;
+}
 
 function NotFoundComponent() {
   return (
@@ -28,7 +34,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  component: () => <Outlet />,
+  component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
