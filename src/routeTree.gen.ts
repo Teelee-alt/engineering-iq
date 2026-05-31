@@ -14,6 +14,7 @@ import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as RequestAccessRouteImport } from './routes/request-access'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as OfflineRouteImport } from './routes/offline'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -45,6 +46,11 @@ const RequestAccessRoute = RequestAccessRouteImport.update({
 const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfflineRoute = OfflineRouteImport.update({
+  id: '/offline',
+  path: '/offline',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -90,6 +96,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
   '/search': typeof SearchRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
   '/search': typeof SearchRoute
@@ -119,6 +127,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
   '/search': typeof SearchRoute
@@ -135,6 +144,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/offline'
     | '/profile'
     | '/request-access'
     | '/search'
@@ -149,6 +159,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/offline'
     | '/profile'
     | '/request-access'
     | '/search'
@@ -163,6 +174,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/offline'
     | '/profile'
     | '/request-access'
     | '/search'
@@ -178,6 +190,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BookmarksRoute: typeof BookmarksRoute
   DashboardRoute: typeof DashboardRoute
+  OfflineRoute: typeof OfflineRoute
   ProfileRoute: typeof ProfileRoute
   RequestAccessRoute: typeof RequestAccessRoute
   SearchRoute: typeof SearchRoute
@@ -221,6 +234,13 @@ declare module '@tanstack/react-router' {
       path: '/profile'
       fullPath: '/profile'
       preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/offline': {
+      id: '/offline'
+      path: '/offline'
+      fullPath: '/offline'
+      preLoaderRoute: typeof OfflineRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -282,6 +302,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BookmarksRoute: BookmarksRoute,
   DashboardRoute: DashboardRoute,
+  OfflineRoute: OfflineRoute,
   ProfileRoute: ProfileRoute,
   RequestAccessRoute: RequestAccessRoute,
   SearchRoute: SearchRoute,

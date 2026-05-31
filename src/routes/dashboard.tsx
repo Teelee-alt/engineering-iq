@@ -57,10 +57,10 @@ function Dashboard() {
           <h1 className="text-3xl md:text-4xl font-bold">
             Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}
           </h1>
-          <p className="text-muted-foreground mt-2 inline-flex items-center gap-2 flex-wrap">
+          <p className="text-foreground/90 mt-2 inline-flex items-center gap-2 flex-wrap">
             <Unlock className="h-4 w-4 text-secondary" />
-            {isFull ? "Full access unlocked – every card across every paper is yours." : "Free preview – first cards of each topic are unlocked."}
-            {totalCards > 0 && <span className="text-xs">· {totalCards} cards total</span>}
+            <span className="font-medium">{isFull ? "Full access unlocked – every card across every paper is yours." : "Free preview – first cards of each topic are unlocked."}</span>
+            {totalCards > 0 && <span className="text-xs font-medium">· {totalCards} cards total</span>}
           </p>
           {showAgent && (
             <div className="mt-3 inline-flex items-center gap-2 rounded-md border border-secondary/40 bg-secondary/5 px-3 py-1.5 text-sm">
@@ -113,14 +113,14 @@ function Dashboard() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <Badge variant="outline" className="mb-2">Paper {i + 1}</Badge>
-                        <h3 className="font-semibold text-xl">{s.title}</h3>
-                        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">{s.description}</p>
+                        <h3 className="font-semibold text-xl text-foreground">{s.title}</h3>
+                        <p className="text-sm text-foreground/75 mt-1 line-clamp-2">{s.description}</p>
                       </div>
                     </div>
 
                     {total > 0 && (
                       <div className="mt-4">
-                        <div className="flex items-center justify-between text-xs text-muted-foreground mb-1">
+                        <div className="flex items-center justify-between text-xs text-foreground/75 font-medium mb-1">
                           <span>{stat.reviewed} / {total} reviewed</span>
                           <span>{stat.masteryPercent}% mastered</span>
                         </div>
@@ -132,7 +132,7 @@ function Dashboard() {
                     )}
 
                     <div className="flex items-center justify-between mt-6">
-                      <div className="text-sm text-muted-foreground flex items-center gap-2 flex-wrap">
+                      <div className="text-sm text-foreground/80 font-medium flex items-center gap-2 flex-wrap">
                         <BookOpen className="h-4 w-4" />
                         {total} cards
                         {!isFull && total > 0 && <Badge variant="outline">First {s.free_card_limit} free</Badge>}
