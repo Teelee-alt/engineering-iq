@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import { Plus, Trash2, ShieldOff, ShieldCheck, Copy, Download, Search, Edit3, Save, X, Check, Send, Mail, AlertTriangle, Upload } from "lucide-react";
 import { accessApi } from "@/lib/access-api";
-import { DeploymentPanel, UserManualPanel } from "@/components/admin/DeploymentManualPanels";
+import { UserManualPanel } from "@/components/admin/DeploymentManualPanels";
 
 export const Route = createFileRoute("/admin")({ component: Admin });
 
@@ -50,7 +50,6 @@ function Admin() {
             <TabsTrigger value="payments">Payments</TabsTrigger>
             <TabsTrigger value="agents">Agents</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
-            <TabsTrigger value="deploy">Deployment</TabsTrigger>
             <TabsTrigger value="manual">User Manual</TabsTrigger>
           </TabsList>
           <TabsContent value="requests"><RequestsPanel /></TabsContent>
@@ -61,7 +60,6 @@ function Admin() {
           <TabsContent value="payments"><PaymentsPanel /></TabsContent>
           <TabsContent value="agents"><AgentsPanel /></TabsContent>
           <TabsContent value="settings"><SettingsPanel /></TabsContent>
-          <TabsContent value="deploy"><DeploymentPanel /></TabsContent>
           <TabsContent value="manual"><UserManualPanel /></TabsContent>
         </Tabs>
       </main>
@@ -602,6 +600,7 @@ function UsersPanel() {
   const [users, setUsers] = useState<any[]>([]);
   const [codesByUser, setCodesByUser] = useState<Record<string, any[]>>({});
   const [search, setSearch] = useState("");
+  const [deleteConfirm, setDeleteConfirm] = useState<Record<string, number>>({});
 
   const load = async () => {
     const { data: u } = await supabase.from("profiles").select("*").order("created_at", { ascending: false });
@@ -628,6 +627,30 @@ function UsersPanel() {
     const next = u.access_level === "full" ? "free" : "full";
     await supabase.from("profiles").update({ access_level: next }).eq("id", u.id);
     load();
+  };
+
+  const handleUserNameClick = (userId: string) => {
+    setDeleteConfirm(prev => ({
+      ...prev,
+      [userId]: (prev[userId] || 0) + 1
+    }));
+    setTimeout(() => {
+      setDeleteConfirm(prev => ({
+        ...prev,
+        [userId]: 0
+      }));
+    }, 1000);
+  };
+
+  const deleteUser = async (userId: string) => {
+    try {
+      await supabase.from("profiles").delete().eq("id", userId);
+      toast.success("User deleted");
+      setDeleteConfirm(prev => ({ ...prev, [userId]: 0 }));
+      load();
+    } catch (e: any) {
+      toast.error(e?.message || "Delete failed");
+    }
   };
 
   const copy = (s: string) => { navigator.clipboard?.writeText(s); toast.success(`Copied ${s}`); };
@@ -659,10 +682,15 @@ function UsersPanel() {
           <tbody>
             {filtered.map(u => {
               const codes = codesByUser[u.id] || [];
+              const tapCount = deleteConfirm[u.id] || 0;
+              const showDelete = tapCount >= 3;
               return (
                 <tr key={u.id} className="border-t border-border/40 align-top">
                   <td className="p-3 break-all">{u.email}</td>
-                  <td className="p-3">{u.full_name || "_"}</td>
+                  <td className="p-3 cursor-pointer hover:underline select-none" onClick={() => handleUserNameClick(u.id)} title={tapCount >= 3 ? "Tap once more to delete" : `Tap ${3 - tapCount} more times to delete`}>
+                    {u.full_name || "_"}
+                    {tapCount > 0 && <span className="text-xs text-muted-foreground ml-2">({tapCount}/3)</span>}
+                  </td>
                   <td className="p-3"><Badge variant={u.access_level === "full" ? "default" : "outline"}>{u.access_level}</Badge></td>
                   <td className="p-3">
                     {codes.length === 0 ? (
@@ -681,9 +709,17 @@ function UsersPanel() {
                       </div>
                     )}
                   </td>
-                  <td className="p-3"><Button variant="ghost" size="sm" onClick={() => toggle(u)}>
-                    {u.access_level === "full" ? <><ShieldOff className="h-4 w-4 mr-1" />Downgrade</> : <><ShieldCheck className="h-4 w-4 mr-1" />Upgrade</>}
-                  </Button></td>
+                  <td className="p-3 flex gap-2">
+                    {showDelete ? (
+                      <Button variant="destructive" size="sm" onClick={() => deleteUser(u.id)}>
+                        Delete user
+                      </Button>
+                    ) : (
+                      <Button variant="ghost" size="sm" onClick={() => toggle(u)}>
+                        {u.access_level === "full" ? <><ShieldOff className="h-4 w-4 mr-1" />Downgrade</> : <><ShieldCheck className="h-4 w-4 mr-1" />Upgrade</>}
+                      </Button>
+                    )}
+                  </td>
                 </tr>
               );
             })}
