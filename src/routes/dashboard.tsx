@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Unlock, BookOpen, Sparkles, ArrowRight, UserCheck, Star, Search } from "lucide-react";
+import { Unlock, BookOpen, Sparkles, ArrowRight, UserCheck, Star, Search, Flame, Zap, Target } from "lucide-react";
 import { useBookmarks, useMastery, summariseMastery } from "@/hooks/use-study-state";
 
 export const Route = createFileRoute("/dashboard")({ component: Dashboard });
@@ -81,9 +81,9 @@ function Dashboard() {
         </div>
 
         {fetching ? (
-          <div className="grid md:grid-cols-2 gap-6">
-            {[1, 2, 3, 4].map((i) => (
-              <Card key={i} className="p-6 bg-card animate-pulse h-40" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3, 4, 5, 6].map((i) => (
+              <Card key={i} className="p-6 bg-card animate-pulse h-48" />
             ))}
           </div>
         ) : sets.length === 0 ? (
@@ -93,53 +93,72 @@ function Dashboard() {
             <p className="text-sm text-muted-foreground mt-2">Admin hasn't added content to the library yet. Check back soon.</p>
           </Card>
         ) : (
-          <div className="grid md:grid-cols-2 gap-6">
+          <>
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-sm text-foreground/70">
+                <Zap className="h-4 w-4 text-purple-500" />
+                <span><strong>{sets.length} comprehensive topics</strong> • Unlock your full learning potential</span>
+              </div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
             {sets.map((s, i) => {
               const ids = setCardIds[s.id] || [];
               const total = ids.length;
               const stat = summariseMastery(ids, mastery);
-              const gradients = [
-                "from-indigo-500/20 to-purple-500/20",
-                "from-emerald-500/20 to-teal-500/20",
-                "from-amber-500/20 to-orange-500/20",
-                "from-rose-500/20 to-pink-500/20",
-                "from-cyan-500/20 to-blue-500/20",
+              
+              // Purple accent colors for all cards
+              const purpleShades = [
+                "from-purple-600/30 to-purple-500/20 border-purple-500/40 hover:border-purple-500/60",
+                "from-purple-500/30 to-indigo-500/20 border-indigo-500/40 hover:border-indigo-500/60",
+                "from-purple-700/30 to-purple-600/20 border-purple-600/40 hover:border-purple-600/60",
               ];
-              const g = gradients[i % gradients.length];
+              const purpleGradient = purpleShades[i % purpleShades.length];
+              
               return (
-                <Card key={s.id} className={`p-6 bg-card text-card-foreground shadow-card-elev hover:border-secondary transition border-2 border-transparent relative overflow-hidden group`}>
-                  <div className={`absolute inset-0 bg-gradient-to-br ${g} opacity-50 group-hover:opacity-100 transition`} />
-                  <div className="relative">
+                <Card key={s.id} className={`p-6 bg-gradient-to-br ${purpleGradient} text-card-foreground shadow-card-elev transition-all duration-300 border-2 hover:shadow-lg hover:scale-105 relative overflow-hidden group cursor-pointer`}>
+                  <div className="absolute -top-4 -right-4 h-24 w-24 bg-gradient-to-br from-purple-400/10 to-transparent rounded-full blur-2xl group-hover:from-purple-400/20 transition" />
+                  <div className="absolute -bottom-6 -left-6 h-20 w-20 bg-gradient-to-tr from-purple-300/10 to-transparent rounded-full blur-2xl group-hover:from-purple-300/20 transition" />
+                  
+                  <div className="relative z-10 space-y-4">
                     <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <Badge variant="outline" className="mb-2">Paper {i + 1}</Badge>
-                        <h3 className="font-semibold text-xl text-foreground">{s.title}</h3>
-                        <p className="text-sm text-foreground/75 mt-1 line-clamp-2">{s.description}</p>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Badge className="bg-purple-600/70 text-white border-0">Topic {s.order_index}</Badge>
+                          {total > 0 && <Badge variant="outline" className="text-xs border-purple-500/50 text-purple-600">{total} cards</Badge>}
+                        </div>
+                        <h3 className="font-bold text-lg md:text-xl text-foreground leading-tight">{s.title}</h3>
                       </div>
                     </div>
 
+                    <p className="text-sm text-foreground/80 leading-relaxed">{s.description}</p>
+
                     {total > 0 && (
-                      <div className="mt-4">
-                        <div className="flex items-center justify-between text-xs text-foreground/75 font-medium mb-1">
-                          <span>{stat.reviewed} / {total} reviewed</span>
-                          <span>{stat.masteryPercent}% mastered</span>
+                      <div className="pt-2 border-t border-purple-500/20 space-y-2">
+                        <div className="flex items-center justify-between text-xs font-semibold text-foreground/70">
+                          <div className="flex items-center gap-1">
+                            <Target className="h-3 w-3 text-purple-600" />
+                            <span>{stat.reviewed} / {total} reviewed</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Flame className="h-3 w-3 text-orange-500" />
+                            <span>{stat.masteryPercent}% mastered</span>
+                          </div>
                         </div>
-                        <div className="h-1.5 w-full bg-muted/40 rounded-full overflow-hidden flex">
-                          <div className="h-full bg-emerald-500/80" style={{ width: `${stat.masteryPercent}%` }} />
-                          <div className="h-full bg-amber-500/80" style={{ width: `${Math.max(0, stat.percent - stat.masteryPercent)}%` }} />
+                        <div className="h-2 w-full bg-muted/40 rounded-full overflow-hidden flex gap-0.5">
+                          <div className="h-full bg-gradient-to-r from-purple-600 to-purple-500" style={{ width: `${stat.masteryPercent}%` }} />
+                          <div className="h-full bg-gradient-to-r from-amber-500 to-amber-400" style={{ width: `${Math.max(0, stat.percent - stat.masteryPercent)}%` }} />
                         </div>
                       </div>
                     )}
 
-                    <div className="flex items-center justify-between mt-6">
-                      <div className="text-sm text-foreground/80 font-medium flex items-center gap-2 flex-wrap">
-                        <BookOpen className="h-4 w-4" />
-                        {total} cards
-                        {!isFull && total > 0 && <Badge variant="outline">First {s.free_card_limit} free</Badge>}
+                    <div className="flex items-center justify-between pt-2 border-t border-purple-500/20">
+                      <div className="text-xs text-foreground/70 font-medium">
+                        {!isFull && total > 0 && <span>First {s.free_card_limit} free</span>}
+                        {isFull && <span className="text-purple-600 font-semibold">✓ Full Access</span>}
                       </div>
-                      <Button asChild className="bg-brand-gradient">
+                      <Button asChild size="sm" className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0">
                         <Link to="/revise/$setId" params={{ setId: s.id }}>
-                          Revise <ArrowRight className="h-4 w-4 ml-1" />
+                          Learn <ArrowRight className="h-3 w-3 ml-1" />
                         </Link>
                       </Button>
                     </div>
@@ -147,7 +166,8 @@ function Dashboard() {
                 </Card>
               );
             })}
-          </div>
+            </div>
+          </>
         )}
       </main>
     </div>
