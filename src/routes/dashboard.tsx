@@ -71,11 +71,11 @@ function Dashboard() {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-6">
-          <Button asChild variant="outline"><Link to="/search"><Search className="h-4 w-4 mr-1" /> Search all cards</Link></Button>
-          <Button asChild variant="outline">
-            <Link to="/bookmarks">
+          <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold"><Link to="/search" className="text-white"><Search className="h-4 w-4 mr-1" /> Search all cards</Link></Button>
+          <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold">
+            <Link to="/bookmarks" className="text-white">
               <Star className="h-4 w-4 mr-1 fill-amber-400 text-amber-400" /> My bookmarks
-              {bookmarks.length > 0 && <Badge variant="outline" className="ml-2">{bookmarks.length}</Badge>}
+              {bookmarks.length > 0 && <Badge className="ml-2 bg-amber-400/20 border-amber-400/40 text-amber-300">{bookmarks.length}</Badge>}
             </Link>
           </Button>
         </div>

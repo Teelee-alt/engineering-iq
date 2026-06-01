@@ -28,8 +28,14 @@ function Revise() {
   useEffect(() => { if (!loading && !user) nav({ to: "/sign-in" }); }, [user, loading, nav]);
 
   useEffect(() => {
-    supabase.from("topic_sets").select("*").eq("id", setId).maybeSingle().then(({ data }) => setSet(data));
-    supabase.from("cards").select("*").eq("topic_set_id", setId).order("order_index").then(({ data }) => setCards(data || []));
+    (async () => {
+      const [setResult, cardsResult] = await Promise.all([
+        supabase.from("topic_sets").select("*").eq("id", setId).maybeSingle(),
+        supabase.from("cards").select("*").eq("topic_set_id", setId).order("order_index")
+      ]);
+      setSet(setResult.data);
+      setCards(cardsResult.data || []);
+    })();
   }, [setId]);
 
   const summary = useMemo(() => summariseMastery(cards.map((c) => c.id), mastery), [cards, mastery]);
@@ -55,7 +61,7 @@ function Revise() {
     <div className="min-h-screen bg-hero no-select">
       <AppHeader />
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <Button asChild className="mb-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back to All Topics</Link></Button>
+        <Button asChild className="mb-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold hover:text-white"><Link to="/dashboard" className="text-white"><ArrowLeft className="h-4 w-4 mr-1" /> Back to All Topics</Link></Button>
         
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">{set.title}</h1>

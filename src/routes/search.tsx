@@ -45,9 +45,9 @@ function SearchPage() {
     <div className="min-h-screen bg-hero">
       <AppHeader />
       <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <Button variant="ghost" asChild className="mb-4"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back</Link></Button>
-        <h1 className="text-2xl font-bold mb-1">Search cards</h1>
-        <p className="text-sm text-muted-foreground mb-4">Search across every card in your library.</p>
+        <Button asChild className="mb-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold hover:text-white"><Link to="/dashboard" className="text-white"><ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard</Link></Button>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-white">Search Cards</h1>
+        <p className="text-white/80 mb-6">Search across every card in your entire library</p>
         <div className="relative mb-6">
           <SearchIcon className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input autoFocus value={q} onChange={(e) => setQ(e.target.value)} placeholder="e.g. Laplace, ladder logic, butterfly valve..." className="pl-9" />

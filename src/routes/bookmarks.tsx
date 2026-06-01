@@ -48,7 +48,7 @@ function BookmarksPage() {
       <div className="min-h-screen bg-hero">
         <AppHeader />
         <main className="container mx-auto px-4 py-10 max-w-3xl">
-          <Button variant="ghost" asChild className="mb-4"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back</Link></Button>
+        <Button asChild className="mb-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold hover:text-white"><Link to="/dashboard" className="text-white"><ArrowLeft className="h-4 w-4 mr-1" /> Back to Dashboard</Link></Button>
           <Card className="p-10 bg-card text-card-foreground text-center">
             <Star className="h-12 w-12 mx-auto text-muted-foreground mb-3" />
             <h3 className="text-xl font-semibold">No bookmarks yet</h3>
@@ -107,12 +107,12 @@ function BookmarksPage() {
           </Card>
         </div>
 
-        <div className="flex justify-between mt-6">
-          <Button variant="outline" disabled={idx === 0} onClick={() => { setIdx(i => i - 1); setFlipped(false); }}>
-            <ChevronLeft className="h-4 w-4 mr-1" /> Previous
+        <div className="flex justify-between mt-8 gap-4">
+          <Button disabled={idx === 0} onClick={() => { setIdx(i => i - 1); setFlipped(false); }} className="bg-gradient-to-r from-slate-600 to-slate-700 text-white border-0 font-semibold hover:from-slate-700 hover:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed hover:text-white">
+            <ChevronLeft className="h-5 w-5 mr-2" /> Previous Bookmark
           </Button>
-          <Button variant="outline" disabled={idx === orderedCards.length - 1} onClick={() => { setIdx(i => i + 1); setFlipped(false); }}>
-            Next <ChevronRight className="h-4 w-4 ml-1" />
+          <Button disabled={idx === orderedCards.length - 1} onClick={() => { setIdx(i => i + 1); setFlipped(false); }} className="bg-gradient-to-r from-slate-600 to-slate-700 text-white border-0 font-semibold hover:from-slate-700 hover:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed hover:text-white">
+            Next Bookmark <ChevronRight className="h-5 w-5 ml-2" />
           </Button>
         </div>
       </main>
