@@ -20,7 +20,7 @@ export function RichContent({ text }: { text: string }) {
   // Convert "**word**" -> "word" so cards never display stray asterisks.
   const cleaned = text.replace(/\*\*(.+?)\*\*/g, "$1");
   return (
-    <div className="rich-content text-base md:text-[1.05rem] leading-relaxed text-card-foreground">
+    <div className="rich-content text-base md:text-[1.05rem] leading-relaxed text-white">
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[rehypeKatex]}

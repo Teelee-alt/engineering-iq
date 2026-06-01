@@ -54,10 +54,10 @@ function Dashboard() {
             <Sparkles className="h-4 w-4 text-secondary" />
             <span className="text-xs uppercase tracking-wider text-secondary font-semibold">Your library</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold">
+          <h1 className="text-3xl md:text-4xl font-bold text-white">
             Welcome{profile?.full_name ? `, ${profile.full_name}` : ""}
           </h1>
-          <p className="text-foreground/90 mt-2 inline-flex items-center gap-2 flex-wrap">
+          <p className="text-white/90 mt-2 inline-flex items-center gap-2 flex-wrap">
             <Unlock className="h-4 w-4 text-secondary" />
             <span className="font-medium">{isFull ? "Full access unlocked – every card across every paper is yours." : "Free preview – first cards of each topic are unlocked."}</span>
             {totalCards > 0 && <span className="text-xs font-medium">· {totalCards} cards total</span>}
@@ -95,8 +95,8 @@ function Dashboard() {
         ) : (
           <>
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-sm text-foreground/70">
-                <Zap className="h-4 w-4 text-purple-500" />
+              <div className="flex items-center gap-2 text-sm text-white/80">
+                <Zap className="h-4 w-4 text-purple-400" />
                 <span><strong>{sets.length} comprehensive topics</strong> • Unlock your full learning potential</span>
               </div>
             </div>

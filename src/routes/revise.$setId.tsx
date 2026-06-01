@@ -55,7 +55,7 @@ function Revise() {
     <div className="min-h-screen bg-hero no-select">
       <AppHeader />
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <Button variant="ghost" asChild className="mb-6"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back to Library</Link></Button>
+        <Button asChild className="mb-6 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back to All Topics</Link></Button>
         
         <div className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">{set.title}</h1>
@@ -147,16 +147,14 @@ function Revise() {
         {!locked && (
           <div className="grid grid-cols-2 gap-4 mt-8">
             <Button
-              variant={cardLevel === "practice" ? "default" : "outline"}
-              className={cardLevel === "practice" ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 font-semibold text-base py-6" : "border-2 border-amber-500/40 text-amber-600 hover:border-amber-500/60 hover:bg-amber-500/5 font-semibold"}
+              className={cardLevel === "practice" ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 font-semibold text-base py-6" : "bg-gradient-to-r from-amber-500 to-orange-500 text-white border-0 font-semibold text-base py-6 hover:from-amber-600 hover:to-orange-600"}
               onClick={(e) => { e.stopPropagation(); mark("practice"); }}
             >
               <AlertCircle className="h-5 w-5 mr-2" /> 
               <span>Needs Practice</span>
             </Button>
             <Button
-              variant={cardLevel === "got" ? "default" : "outline"}
-              className={cardLevel === "got" ? "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white border-0 font-semibold text-base py-6" : "border-2 border-emerald-500/40 text-emerald-600 hover:border-emerald-500/60 hover:bg-emerald-500/5 font-semibold"}
+              className={cardLevel === "got" ? "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white border-0 font-semibold text-base py-6" : "bg-gradient-to-r from-emerald-500 to-teal-500 text-white border-0 font-semibold text-base py-6 hover:from-emerald-600 hover:to-teal-600"}
               onClick={(e) => { e.stopPropagation(); mark("got"); }}
             >
               <ThumbsUp className="h-5 w-5 mr-2" /> 
@@ -167,20 +165,24 @@ function Revise() {
 
         <div className="flex justify-between mt-8 gap-4">
           <Button 
-            variant="outline" 
             disabled={idx === 0} 
             onClick={() => { setIdx(i => i - 1); setFlipped(false); }}
-            className="border-purple-500/30 text-foreground hover:bg-purple-500/10 hover:border-purple-500/60 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+            className="bg-gradient-to-r from-slate-600 to-slate-700 text-white border-0 font-semibold hover:from-slate-700 hover:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <ChevronLeft className="h-5 w-5 mr-2" /> Previous Card
           </Button>
           <Button 
-            variant="outline" 
             disabled={idx === cards.length - 1} 
             onClick={goNext}
-            className="border-purple-500/30 text-foreground hover:bg-purple-500/10 hover:border-purple-500/60 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+            className="bg-gradient-to-r from-slate-600 to-slate-700 text-white border-0 font-semibold hover:from-slate-700 hover:to-slate-800 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Next Card <ChevronRight className="h-5 w-5 ml-2" />
+          </Button>
+        </div>
+
+        <div className="mt-6 flex gap-4">
+          <Button asChild className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold py-6">
+            <Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-2" /> Return to All Topics</Link>
           </Button>
         </div>
       </main>
