@@ -6,7 +6,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, ArrowLeft, Lock, RotateCw, Star, ThumbsUp, AlertCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft, Lock, RotateCw, Star, ThumbsUp, AlertCircle, Flame, Target, Brain } from "lucide-react";
 import { useScreenshotProtection } from "@/hooks/use-screenshot-protection";
 import { RichContent } from "@/components/RichContent";
 import { useBookmarks, useMastery, summariseMastery } from "@/hooks/use-study-state";
@@ -54,87 +54,133 @@ function Revise() {
   return (
     <div className="min-h-screen bg-hero no-select">
       <AppHeader />
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
-        <Button variant="ghost" asChild className="mb-4"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back</Link></Button>
-        <h1 className="text-2xl font-bold mb-1">{set.title}</h1>
-        <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3 flex-wrap">
-          <span>Card {idx + 1} of {cards.length}</span>
-          {!isFull && <Badge variant="outline">Free: {Math.min(freeLimit, cards.length)}</Badge>}
-          <span className="ml-auto flex items-center gap-2 flex-wrap">
-            <Badge variant="outline" className="border-emerald-500/40 text-emerald-400">{summary.got} mastered</Badge>
-            <Badge variant="outline" className="border-amber-500/40 text-amber-400">{summary.practice} to revisit</Badge>
-            <Badge variant="outline">{summary.masteryPercent}%</Badge>
-          </span>
+      <main className="container mx-auto px-4 py-8 max-w-4xl">
+        <Button variant="ghost" asChild className="mb-6"><Link to="/dashboard"><ArrowLeft className="h-4 w-4 mr-1" /> Back to Library</Link></Button>
+        
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl font-bold mb-2 text-foreground">{set.title}</h1>
+          <p className="text-foreground/75 text-sm md:text-base leading-relaxed max-w-2xl">{set.description}</p>
         </div>
-        <div className="h-1 w-full bg-muted/40 rounded-full overflow-hidden mb-6">
-          <div className="h-full bg-brand-gradient transition-all" style={{ width: `${progress}%` }} />
+
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-gradient-to-br from-purple-600/20 to-purple-500/10 border border-purple-500/30 rounded-lg p-4">
+            <div className="flex items-center gap-2 text-sm text-foreground/70 mb-1">
+              <Brain className="h-4 w-4 text-purple-600" />
+              <span className="font-semibold">Progress</span>
+            </div>
+            <div className="text-2xl font-bold text-foreground">{idx + 1}<span className="text-sm text-foreground/60 font-normal"> / {cards.length}</span></div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-emerald-600/20 to-emerald-500/10 border border-emerald-500/30 rounded-lg p-4">
+            <div className="flex items-center gap-2 text-sm text-foreground/70 mb-1">
+              <Flame className="h-4 w-4 text-emerald-600" />
+              <span className="font-semibold">Mastered</span>
+            </div>
+            <div className="text-2xl font-bold text-emerald-400">{summary.got}</div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-amber-600/20 to-amber-500/10 border border-amber-500/30 rounded-lg p-4">
+            <div className="flex items-center gap-2 text-sm text-foreground/70 mb-1">
+              <Target className="h-4 w-4 text-amber-600" />
+              <span className="font-semibold">To Revisit</span>
+            </div>
+            <div className="text-2xl font-bold text-amber-400">{summary.practice}</div>
+          </div>
+        </div>
+
+        <div className="space-y-2 mb-6">
+          <div className="flex items-center justify-between text-sm font-semibold text-foreground/70">
+            <span>Mastery Progress</span>
+            <span className="text-purple-600">{summary.masteryPercent}% Complete</span>
+          </div>
+          <div className="h-3 w-full bg-muted/40 rounded-full overflow-hidden flex gap-0.5">
+            <div className="h-full bg-gradient-to-r from-purple-600 to-purple-500 transition-all duration-500" style={{ width: `${summary.masteryPercent}%` }} />
+            <div className="h-full bg-gradient-to-r from-amber-500 to-amber-400 transition-all duration-500" style={{ width: `${Math.max(0, 100 - summary.masteryPercent)}%` }} />
+          </div>
         </div>
 
         <div className="relative">
           {hidden && <div className="fixed inset-0 z-[100] bg-background flex items-center justify-center text-muted-foreground text-sm">Protected. Return focus to the app to continue.</div>}
           <Card
-            className="p-8 min-h-[360px] bg-card text-card-foreground shadow-card-elev cursor-pointer protected-watermark"
+            className={`p-8 md:p-10 min-h-[420px] bg-gradient-to-br ${flipped ? "from-purple-600/15 to-indigo-600/10" : "from-slate-50/5 to-slate-100/5"} text-card-foreground shadow-lg cursor-pointer protected-watermark transition-all duration-300 border-2 border-purple-500/30 hover:border-purple-500/50`}
             data-watermark={profile?.email || "INDUSTRIAL AUTOMATION"}
             onClick={() => !locked && setFlipped((f) => !f)}
           >
             {locked ? (
-              <div className="flex flex-col items-center justify-center text-center h-[300px] gap-4">
-                <Lock className="h-12 w-12 text-muted-foreground" />
-                <h3 className="text-xl font-semibold">Full access required</h3>
-                <p className="text-sm text-muted-foreground max-w-md">
-                  You've reached the end of the free preview. Pay an authorised agent in cash. Once admin confirms, a new access code is emailed to you and the rest unlocks.
+              <div className="flex flex-col items-center justify-center text-center h-[350px] gap-4">
+                <Lock className="h-16 w-16 text-purple-500/40" />
+                <h3 className="text-2xl font-bold text-foreground">Full Access Unlocks Everything</h3>
+                <p className="text-foreground/75 max-w-md leading-relaxed">
+                  You've mastered the free preview! Contact an authorised agent for full access to all {cards.length} cards in this topic.
                 </p>
               </div>
             ) : (
-              <div>
-                <div className="flex items-center justify-between mb-4 gap-2 flex-wrap">
-                  <Badge className="bg-brand-gradient text-primary-foreground">{flipped ? "Answer" : "Question"}</Badge>
+              <div className="space-y-6">
+                <div className="flex items-center justify-between gap-2 flex-wrap">
+                  <Badge className={`${flipped ? "bg-gradient-to-r from-purple-600 to-indigo-600" : "bg-gradient-to-r from-slate-600 to-slate-700"} text-white border-0 text-sm font-semibold px-3 py-1`}>
+                    {flipped ? "📌 Answer" : "❓ Question"}
+                  </Badge>
                   <div className="flex items-center gap-1">
                     <Button
                       variant="ghost"
                       size="sm"
                       title={isBookmarked(card.id) ? "Remove bookmark" : "Bookmark card"}
                       onClick={(e) => { e.stopPropagation(); toggleBookmark(card.id); }}
+                      className="hover:bg-purple-500/20"
                     >
-                      <Star className={`h-4 w-4 ${isBookmarked(card.id) ? "fill-amber-400 text-amber-400" : ""}`} />
+                      <Star className={`h-5 w-5 ${isBookmarked(card.id) ? "fill-amber-400 text-amber-400" : "text-foreground/50"}`} />
                     </Button>
-                    <Button variant="ghost" size="sm" onClick={(e) => { e.stopPropagation(); setFlipped(f => !f); }}>
-                      <RotateCw className="h-4 w-4 mr-1" /> Flip
+                    <Button variant="ghost" size="sm" onClick={(e) => { e.stopPropagation(); setFlipped(f => !f); }} className="hover:bg-purple-500/20">
+                      <RotateCw className="h-5 w-5 mr-2" /> Flip
                     </Button>
                   </div>
                 </div>
-                <RichContent text={flipped ? card.answer : card.question} />
-                {!flipped && <p className="text-xs text-muted-foreground mt-6">Tap card or press Flip to reveal answer.</p>}
+                <div className={`text-lg leading-relaxed text-foreground ${!flipped ? "font-semibold" : ""}`}>
+                  <RichContent text={flipped ? card.answer : card.question} />
+                </div>
+                {!flipped && <p className="text-sm text-foreground/60 flex items-center justify-center gap-2 pt-4 border-t border-purple-500/20">💡 Tap the card or click Flip to reveal the answer</p>}
               </div>
             )}
           </Card>
         </div>
 
         {!locked && (
-          <div className="grid grid-cols-2 gap-3 mt-4">
+          <div className="grid grid-cols-2 gap-4 mt-8">
             <Button
               variant={cardLevel === "practice" ? "default" : "outline"}
-              className={cardLevel === "practice" ? "bg-amber-500 hover:bg-amber-500/90 text-black" : "border-amber-500/40 text-amber-400 hover:text-amber-300"}
+              className={cardLevel === "practice" ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white border-0 font-semibold text-base py-6" : "border-2 border-amber-500/40 text-amber-600 hover:border-amber-500/60 hover:bg-amber-500/5 font-semibold"}
               onClick={(e) => { e.stopPropagation(); mark("practice"); }}
             >
-              <AlertCircle className="h-4 w-4 mr-1" /> Needs practice
+              <AlertCircle className="h-5 w-5 mr-2" /> 
+              <span>Needs Practice</span>
             </Button>
             <Button
               variant={cardLevel === "got" ? "default" : "outline"}
-              className={cardLevel === "got" ? "bg-emerald-500 hover:bg-emerald-500/90 text-black" : "border-emerald-500/40 text-emerald-400 hover:text-emerald-300"}
+              className={cardLevel === "got" ? "bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white border-0 font-semibold text-base py-6" : "border-2 border-emerald-500/40 text-emerald-600 hover:border-emerald-500/60 hover:bg-emerald-500/5 font-semibold"}
               onClick={(e) => { e.stopPropagation(); mark("got"); }}
             >
-              <ThumbsUp className="h-4 w-4 mr-1" /> Got it
+              <ThumbsUp className="h-5 w-5 mr-2" /> 
+              <span>Got It!</span>
             </Button>
           </div>
         )}
 
-        <div className="flex justify-between mt-6">
-          <Button variant="outline" disabled={idx === 0} onClick={() => { setIdx(i => i - 1); setFlipped(false); }}>
-            <ChevronLeft className="h-4 w-4 mr-1" /> Previous
+        <div className="flex justify-between mt-8 gap-4">
+          <Button 
+            variant="outline" 
+            disabled={idx === 0} 
+            onClick={() => { setIdx(i => i - 1); setFlipped(false); }}
+            className="border-purple-500/30 text-foreground hover:bg-purple-500/10 hover:border-purple-500/60 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+          >
+            <ChevronLeft className="h-5 w-5 mr-2" /> Previous Card
           </Button>
-          <Button variant="outline" disabled={idx === cards.length - 1} onClick={goNext}>
-            Next <ChevronRight className="h-4 w-4 ml-1" />
+          <Button 
+            variant="outline" 
+            disabled={idx === cards.length - 1} 
+            onClick={goNext}
+            className="border-purple-500/30 text-foreground hover:bg-purple-500/10 hover:border-purple-500/60 disabled:opacity-50 disabled:cursor-not-allowed font-semibold"
+          >
+            Next Card <ChevronRight className="h-5 w-5 ml-2" />
           </Button>
         </div>
       </main>
