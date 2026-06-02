@@ -15,6 +15,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as RequestAccessRouteImport } from './routes/request-access'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as OfflineRouteImport } from './routes/offline'
+import { Route as ExamModeRouteImport } from './routes/exam-mode'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -51,6 +52,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const OfflineRoute = OfflineRouteImport.update({
   id: '/offline',
   path: '/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamModeRoute = ExamModeRouteImport.update({
+  id: '/exam-mode',
+  path: '/exam-mode',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/exam-mode': typeof ExamModeRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/exam-mode': typeof ExamModeRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
+  '/exam-mode': typeof ExamModeRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/exam-mode'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -159,6 +169,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/exam-mode'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/bookmarks'
     | '/dashboard'
+    | '/exam-mode'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BookmarksRoute: typeof BookmarksRoute
   DashboardRoute: typeof DashboardRoute
+  ExamModeRoute: typeof ExamModeRoute
   OfflineRoute: typeof OfflineRoute
   ProfileRoute: typeof ProfileRoute
   RequestAccessRoute: typeof RequestAccessRoute
@@ -241,6 +254,13 @@ declare module '@tanstack/react-router' {
       path: '/offline'
       fullPath: '/offline'
       preLoaderRoute: typeof OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exam-mode': {
+      id: '/exam-mode'
+      path: '/exam-mode'
+      fullPath: '/exam-mode'
+      preLoaderRoute: typeof ExamModeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -302,6 +322,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BookmarksRoute: BookmarksRoute,
   DashboardRoute: DashboardRoute,
+  ExamModeRoute: ExamModeRoute,
   OfflineRoute: OfflineRoute,
   ProfileRoute: ProfileRoute,
   RequestAccessRoute: RequestAccessRoute,

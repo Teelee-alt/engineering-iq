@@ -78,6 +78,11 @@ function Dashboard() {
               {bookmarks.length > 0 && <Badge className="ml-2 bg-amber-400/20 border-amber-400/40 text-amber-300">{bookmarks.length}</Badge>}
             </Link>
           </Button>
+          <Button asChild className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white border-0 font-semibold">
+            <Link to="/exam-mode" className="text-white">
+              <Zap className="h-4 w-4 mr-1" /> EXAM Mode
+            </Link>
+          </Button>
         </div>
 
         {fetching ? (
