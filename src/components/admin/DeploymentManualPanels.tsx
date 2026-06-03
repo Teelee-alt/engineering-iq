@@ -4,10 +4,11 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { toast } from "sonner";
 import { Copy, ExternalLink, Rocket, BookOpen } from "lucide-react";
 
-const SUPABASE_URL = "https://sefwgqtthvrmwcnanncr.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlZndncXR0aHZybXdjbmFubmNyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk5MTYxMTksImV4cCI6MjA5NTQ5MjExOX0.C9GDyGmdEDKoUW36471VYONTL-Q21oe-L4HTpuG-dr8";
-const SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNlZndncXR0aHZybXdjbmFubmNyIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3OTkxNjExOSwiZXhwIjoyMDk1NDkyMTE5fQ.JcpmmLi62yMr-TSLJGG5OHMp4o50wqDSIrTjLbUF7eg";
-const PROJECT_ID = "sefwgqtthvrmwcnanncr";
+// PLACEHOLDER: Replace with your actual Supabase credentials
+const SUPABASE_URL = "https://your-project.supabase.co";
+const SUPABASE_ANON = "YOUR_SUPABASE_ANON_KEY";
+const SUPABASE_SERVICE_ROLE_KEY = "YOUR_SUPABASE_SERVICE_ROLE_KEY";
+const PROJECT_ID = "your-project-id";
 
 function CopyRow({ label, value, secret }: { label: string; value: string; secret?: boolean }) {
   return (
@@ -98,9 +99,9 @@ export function UserManualPanel() {
         <AccordionItem value="overview">
           <AccordionTrigger>1. System overview</AccordionTrigger>
           <AccordionContent className="space-y-2 text-sm">
-            <p>This is a flashcard learning app for Industrial Automation. Users browse topic sets, revise cards, mark mastery, and bookmark.</p>
+            <p>This is a flashcard revision platform for Research Methods. Users browse topic sets, revise cards, mark mastery, and bookmark content for exam preparation.</p>
             <p>Access is tiered: <strong>Free</strong> (first few cards per topic) and <strong>Full</strong> (all cards, unlocked by access code).</p>
-            <p>Only authenticated users can read cards (enforced by RLS).</p>
+            <p>Only authenticated users can read cards (enforced by RLS). Content includes 250+ professionally formatted cards from 5 past exam papers.</p>
           </AccordionContent>
         </AccordionItem>
 
