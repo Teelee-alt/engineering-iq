@@ -8,6 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, BookOpen, Zap, Volume2, Eye, EyeOff, Flag, CheckCircle2, RotateCcw } from "lucide-react";
 import { useBookmarks, useMastery } from "@/hooks/use-study-state";
+import EXAM_MODE_CARDS from "@/data/exam-cards";
+import EXTENDED_EXAM_CARDS from "@/data/extended-exam-cards";
 
 export const Route = createFileRoute("/exam-mode")({ component: ExamMode });
 
@@ -16,6 +18,7 @@ interface ExamCard {
   question: string;
   answer: string;
   difficulty?: string;
+  topic?: string;
 }
 
 function ExamMode() {
@@ -35,13 +38,36 @@ function ExamMode() {
   useEffect(() => {
     if (!user) return;
     setFetching(true);
+    
+    // First try to load from Supabase
     (async () => {
       const { data: examCards } = await supabase
         .from("cards")
-        .select("id, question, answer, difficulty")
+        .select("id, question, answer, difficulty, topic_set_id")
         .eq("topic_set_id", "f0000010-0000-0000-0000-000000000000")
         .order("order_index");
-      setCards(examCards || []);
+      
+      // If found in database, use those cards
+      if (examCards && examCards.length > 0) {
+        setCards(examCards.map((card: any) => ({
+          id: card.id,
+          question: card.question,
+          answer: card.answer,
+          difficulty: card.difficulty || 'medium',
+          topic: 'EXAM Mode'
+        })));
+      } else {
+        // Otherwise combine local exam cards data with extended cards
+        const allCards = [...EXAM_MODE_CARDS, ...EXTENDED_EXAM_CARDS];
+        const cardsWithIds = allCards.map((card, idx) => ({
+          id: `exam-${idx}-${Math.random().toString(36).substr(2, 9)}`,
+          question: card.question,
+          answer: card.answer,
+          difficulty: card.difficulty,
+          topic: card.topic
+        }));
+        setCards(cardsWithIds);
+      }
       setFetching(false);
     })();
   }, [user]);
