@@ -7,1079 +7,686 @@ export interface ExamCard {
 
 export const RESEARCH_METHODS_CARDS: ExamCard[] = [
   // ============================================
-  // TOPIC 1: SAMPLING METHODS & TECHNIQUES
+  // TOPIC 1: THE NATURE OF RESEARCH (Cards 1-50)
   // ============================================
   
   {
-    topic: 'Sampling Methods & Techniques',
-    question: 'What is Probability Sampling?',
-    answer: `**Probability Sampling** is a method where every member of the population has a known, non-zero chance of being selected. Selection is random, allowing statistical inference and estimation of sampling error. Examples include:
-- Simple random sampling
-- Stratified random sampling  
-- Systematic sampling
-- Cluster sampling
-- Multistage sampling`,
+    topic: 'The Nature of Research',
+    question: 'What is the meaning of RESEARCH when broken down?',
+    answer: 'RE (prefix) = do it again; SEARCH = investigate or look for. Research is a systematic means of problem solving that fills gaps in knowledge.'
+  },
+  
+  {
+    topic: 'The Nature of Research',
+    question: "Define research according to Grinnell (1993)",
+    answer: 'A structured inquiry that utilizes acceptable scientific methodology to solve problems and create new knowledge that is generally applicable.'
+  },
+  
+  {
+    topic: 'The Nature of Research',
+    question: 'What are the five key characteristics of research?',
+    answer: '1) **Systematic** - planned and organized\n2) **Logical** - follows clear reasoning\n3) **Empirical** - based on observation and evidence\n4) **Reductive** - allows generalization from specific cases\n5) **Replicable** - other researchers can repeat it',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'The Nature of Research',
+    question: 'Differentiate between methods and methodology',
+    answer: '**Methods** = specific techniques and procedures used to obtain data (questionnaires, interviews)\n**Methodology** = the theory of how research should be undertaken; the overall strategy and framework for the research'
+  },
+  
+  {
+    topic: 'The Nature of Research',
+    question: 'What is basic (pure) research? Give an example.',
+    answer: '**Basic research** seeks to extend the boundaries of knowledge and test theory without immediate practical application.\n\n**Example:** Does caffeine ingestion improve Ca²⁺ binding with troponin? (mechanism-oriented, no immediate practical application)',
     difficulty: 'easy'
   },
   
   {
-    topic: 'Sampling Methods & Techniques',
-    question: 'Define Non-Probability Sampling with Examples',
-    answer: `**Non-Probability Sampling** is based on non-random criteria (e.g., convenience, judgment). Not every member has a known chance of inclusion. Results cannot be generalised with statistical confidence but are cheaper and faster.
-
-| Type | Definition | Example |
-|------|-----------|---------|
-| **Convenience** | Select easily available subjects | Survey students in your class |
-| **Purposive** | Intentional selection based on criteria | Interview only senior engineers with 10+ years experience |
-| **Quota** | Fill pre-set quotas per stratum | Need 20 men, 20 women engineers |
-| **Snowball** | Referrals from initial respondents | Chain referral in hard-to-reach populations |`,
-    difficulty: 'medium'
-  },
-  
-  {
-    topic: 'Sampling Methods & Techniques',
-    question: 'Explain Simple Random Sampling with Formula',
-    answer: `**Simple Random Sampling** gives each population element equal and independent chance of selection.
-
-**Method:** Use random number tables, lottery, or random generator.
-
-**Formula:** $P(\text{selection}) = \\frac{1}{N}$ where N = population size
-
-**Worked Example:**
-- Population: 500 registered electricians
-- Required sample: 50 electricians
-- Assign numbers 1–500 to each
-- Use random number generator to select 50 numbers
-- Contact electricians with those numbers
-- Every electrician has exactly 1/500 = 0.2% chance of selection`,
-    difficulty: 'medium'
-  },
-  
-  {
-    topic: 'Sampling Methods & Techniques',
-    question: 'Explain Stratified Random Sampling with Example',
-    answer: `**Stratified Random Sampling** divides population into homogeneous subgroups (strata) and randomly samples from each, often proportionally.
-
-**Why use:** Ensures all subgroups represented; reduces sampling error for stratified populations.
-
-**Worked Example:**
-- Company workforce: 60% apprentices, 40% journeymen (total 500)
-- Stratify: Apprentices = 300, Journeymen = 200
-- Sample proportionally: 60 apprentices, 40 journeymen
-- Randomly select 60 from 300 apprentices; 40 from 200 journeymen
-- Total sample = 100 (20% of population, maintaining 60:40 ratio)
-
-**Result:** Sample composition matches population exactly.`,
-    difficulty: 'medium'
-  },
-  
-  {
-    topic: 'Sampling Methods & Techniques',
-    question: 'Derive and Apply Systematic Sampling Formula',
-    answer: `**Systematic Sampling** selects every k-th element after random start.
-
-**Formula:** $k = \\frac{\\text{Population size}}{\\text{Sample size}}$
-
-**Worked Example:**
-- Population size: 1,000 employees
-- Required sample: 100 employees
-- Calculate k: $k = \\frac{1000}{100} = 10$
-- Random start between 1–10: say 7
-- Select: 7, 17, 27, 37, 47, 57, 67...
-- Continue until reaching 100 selections
-
-**Advantages:** Simple, systematic spacing, often more accurate than simple random if population ordered randomly.`,
-    difficulty: 'hard'
-  },
-  
-  {
-    topic: 'Sampling Methods & Techniques',
-    question: 'Distinguish Cluster vs. Multistage Sampling',
-    answer: `| Feature | Cluster Sampling | Multistage Sampling |
-|---------|------------------|---------------------|
-| **Definition** | Divide population into clusters; randomly select clusters; survey ALL in selected clusters | Apply multiple sampling methods in successive stages |
-| **Stages** | One stage | Two or more stages |
-| **Cost** | Low – only selected clusters surveyed | Moderate – staged approach |
-| **Example** | Select 10 of 50 suburbs; interview EVERY electrician in those 10 | Stage 1: Select districts; Stage 2: Select towns in districts; Stage 3: Select households in towns |
-| **When used** | Geographically spread populations | Large populations across hierarchical divisions |
-
-**Practical use:** Electrical workers survey in province uses multistage: districts → towns → individual workers.`,
-    difficulty: 'hard'
-  },
-  
-  // ============================================
-  // TOPIC 2: RESEARCH DESIGN & METHODOLOGY
-  // ============================================
-  
-  {
-    topic: 'Research Design & Methodology',
-    question: 'Define Research Design and State Its Importance',
-    answer: `**Research Design** is the overall strategy or blueprint that guides data collection, measurement, and analysis.
-
-**Key Characteristics:**
-- Ensures research question answered validly
-- Reduces bias systematically
-- Enables appropriate statistical analysis
-- Allows replication by others
-- Allocates resources efficiently
-
-**Importance:**
-1. Provides clear structure and direction
-2. Maximizes reliability and reduces errors
-3. Enables valid conclusions
-4. Ensures ethical compliance
-5. Facilitates replication and verification`,
+    topic: 'The Nature of Research',
+    question: 'What is applied research? Give an example.',
+    answer: '**Applied research** applies findings to solve a specific existing problem; a methodical quest for solutions to practical problems.\n\n**Example:** Does caffeine ingestion improve athletic performance? (direct practical application)',
     difficulty: 'easy'
   },
   
   {
-    topic: 'Research Design & Methodology',
-    question: 'Describe Laboratory Experiment Procedures (8-step process)',
-    answer: `**Laboratory Experiment Procedure:**
-
-1. **Define variables**
-   - Independent variable (manipulated)
-   - Dependent variable (measured)
-   - Control variables (held constant)
-
-2. **Formulate hypothesis** – Testable prediction
-
-3. **Control extraneous variables** – Temperature, humidity, voltage standardised
-
-4. **Random assignment** – Subjects randomly assigned to experimental/control groups
-
-5. **Manipulate independent variable** – Apply treatment (e.g., change circuit configuration)
-
-6. **Measure dependent variable** – Record outcomes (power output, efficiency)
-
-7. **Analyse results** – Statistical tests comparing groups
-
-8. **Draw conclusions** – Accept or reject hypothesis
-
-**Example:** Test if increasing heatsink surface area reduces transistor temperature. Control: ambient temp, load current. Measure: junction temperature. Compare experimental vs. control group.`,
+    topic: 'The Nature of Research',
+    question: 'Define descriptive, correlational, and explanatory research',
+    answer: '**Descriptive:** Describes a phenomenon as it exists; answers "what", "who", "where", "when", "how"\n\n**Correlational:** Examines relationships between non-manipulated variables; measures association but not causation\n\n**Explanatory (Causal):** Identifies cause-and-effect relationships; answers "why" questions through controlled experiments',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Research Design & Methodology',
-    question: 'Compare Exploratory, Descriptive, and Causal Research Designs',
-    answer: `| Aspect | Exploratory | Descriptive | Causal |
-|--------|-------------|-------------|---------|
-| **Purpose** | Explore poorly understood problem; generate hypotheses | Describe characteristics, patterns, behaviours | Determine cause-effect relationships |
-| **Research Q** | "What is happening?" | "What? Where? When? How many?" | "Why does X cause Y?" |
-| **Design** | Loose, flexible, evolving | Structured, pre-planned | Highly structured, controlled |
-| **Methods** | Literature review, interviews, focus groups, case studies | Surveys, observation, correlation | Experiments (lab/field), quasi-experiments |
-| **Variable control** | None | None | Independent variable manipulated |
-| **Control groups** | Not used | Not used | Essential for comparison |
-| **Analysis** | Qualitative, thematic | Frequency, percentage, average | Hypothesis testing, ANOVA, regression |
-| **Outcome** | Refined questions, insights, hypotheses | Profiles, distributions, descriptions | Causal claims supported by data |
-| **Example** | Why do new motors fail intermittently? | How many transformers fail annually? What age groups? | Does increased load cause temperature rise? |`,
+    topic: 'The Nature of Research',
+    question: 'Explain the "third-variable problem" in correlational research',
+    answer: 'An observed correlation between two variables may be due to each being correlated with a third, unmeasured variable, rather than a direct causal link.\n\n**Example:** Ice cream sales correlate with drowning deaths, but temperature is the third variable causing both.',
     difficulty: 'hard'
   },
   
   {
-    topic: 'Research Design & Methodology',
-    question: 'Describe Case Study Research Design with Characteristics',
-    answer: `**Case Study** is an in-depth, intensive investigation of a single case (person, organisation, event, project) in real-life context.
-
-**Main Features:**
-1. **In-depth examination** – Single unit studied intensively
-2. **Context-bound** – Real-life setting; boundaries blurred
-3. **Multiple data sources** – Interviews, documents, observations, artefacts
-4. **Holistic perspective** – Understanding whole case, not isolated variables
-5. **Particularistic** – Focus on specific instance, not generalisation
-6. **Iterative analysis** – Data collection and analysis simultaneous
-
-**Advantages:**
-- Rich contextual understanding
-- Identifies complex mechanisms
-- Suitable for exploring "how" and "why"
-
-**Limitations:**
-- Cannot generalise to population
-- Time-consuming
-- Researcher bias possible
-
-**Worked Example:** Case study of substation fire:
-- Analyse design specifications
-- Review maintenance records
-- Interview operators
-- Examine weather conditions at time
-- Reconstruct causal sequence
-- Identify root causes and recommendations`,
+    topic: 'The Nature of Research',
+    question: 'What is exploratory research and when is it used?',
+    answer: '**Definition:** Conducted for a problem that has not been clearly defined, when there are very few or no earlier studies.\n\n**Uses:**\n- Lays foundation for future research\n- Develops new ideas and hypotheses\n- Usually produces qualitative data\n\n**Advantages:** Flexible, low cost, helps decide if topic is worth further investment\n\n**Disadvantages:** Usually inconclusive, results can be biased due to small sample sizes',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Research Design & Methodology',
-    question: 'Diagram and Explain the 9-Step Research Process',
-    answer: `**Research Process Flow:**
-
-$$\\text{Problem} \\rightarrow \\text{Literature} \\rightarrow \\text{Questions} \\rightarrow \\text{Hypothesis} \\rightarrow \\text{Design}$$
-$$\\downarrow \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\quad \\downarrow$$
-$$\\text{Collect Data} \\rightarrow \\text{Analyse Data} \\rightarrow \\text{Interpret} \\rightarrow \\text{Report}$$
-
-**Step Descriptions:**
-
-| Step | Activity | Output |
-|------|----------|--------|
-| 1 | **Identify problem** | Gap, question, contradiction identified |
-| 2 | **Review literature** | Context, existing knowledge, gaps found |
-| 3 | **Research questions** | Clear, answerable questions formulated |
-| 4 | **Hypothesis/objectives** | Testable predictions or SMART goals |
-| 5 | **Design methodology** | Strategy, sampling, instruments, procedures |
-| 6 | **Collect data** | Raw data gathered systematically |
-| 7 | **Analyse data** | Patterns, relationships, summaries identified |
-| 8 | **Interpret findings** | Results linked to questions and theory |
-| 9 | **Report/disseminate** | Findings communicated to audiences |
-
-**Note:** Process is often iterative; unexpected results loop back to earlier stages.`,
+    topic: 'The Nature of Research',
+    question: 'Define paradigm in research. What are three major paradigms?',
+    answer: '**Paradigm:** From Greek "paradeigma" meaning pattern. A conceptual framework shared by a community of scientists that provides a model for examining problems and solutions.\n\n**Three major paradigms:**\n1) **Positivism** - objective reality, measurable, quantitative\n2) **Constructivism** - socially constructed reality, qualitative\n3) **Pragmatism** - practical approach, mixed methods',
     difficulty: 'hard'
   },
   
-  // ============================================
-  // TOPIC 3: DATA COLLECTION INSTRUMENTS
-  // ============================================
-  
   {
-    topic: 'Data Collection Instruments',
-    question: 'Define Research Instrument and Provide Examples',
-    answer: `**Research Instrument** is a tool used to collect, measure, and record data for a study.
-
-**Essential Properties:**
-- **Validity** – Measures what it intends to measure
-- **Reliability** – Produces consistent results under same conditions
-- **Objectivity** – Minimises observer bias
-
-**Common Research Instruments:**
-
-| Instrument | Use | Example |
-|-----------|-----|---------|
-| **Questionnaire** | Survey data collection | 20-item scale on workplace safety |
-| **Interview guide** | Qualitative data | Semi-structured questions for engineers |
-| **Observation checklist** | Behavioural recording | Tallies for safety compliance |
-| **Psychological scale** | Attitude/belief measurement | Likert scale: strongly disagree (1) to strongly agree (5) |
-| **Measurement tool** | Physical/quantitative data | Multimeter, oscilloscope, power meter |
-| **Test** | Knowledge/skill assessment | Engineering competency exam |
-
-**Worked Example:** Motor efficiency study uses multimeter as instrument: measures voltage, current, mechanical output to calculate efficiency ratio.`,
-    difficulty: 'easy'
+    topic: 'The Nature of Research',
+    question: 'Explain ontology, epistemology, and methodology',
+    answer: '**Ontology:** The nature of our beliefs about reality. Does a single verifiable reality exist, or are there socially constructed multiple realities?\n\n**Epistemology:** The branch of philosophy studying the nature of knowledge and how it is acquired and validated.\n\n**Methodology:** The theory of how research should be undertaken; the strategy that informs research method choice.\n\n**Relationship:** Ontology → Epistemology → Methodology (each influences the next)',
+    difficulty: 'hard'
   },
   
   {
-    topic: 'Data Collection Instruments',
-    question: 'Explain Participant Observation with Advantages/Disadvantages',
-    answer: `**Participant Observation** is a qualitative method where researcher becomes group member, participating in activities while observing and recording behaviour.
-
-**Process:**
-1. Researcher joins the group/organisation
-2. Participates in normal activities
-3. Observes behaviour systematically
-4. Takes field notes during or after
-5. Records interactions, decisions, relationships
-
-**Worked Example:** Research on maintenance safety:
-- Engineer joins maintenance team for 6 months
-- Works alongside technicians daily
-- Observes lockout/tagout procedures
-- Records how decisions made in real context
-- Identifies barriers to safety compliance
-
-**Advantages:**
-- Contextual richness – see real behaviour, non-verbal cues
-- Access to insider perspectives
-- Understanding of meanings and motivations
-- Data from natural settings
-
-**Disadvantages:**
-- Reactivity (Hawthorne effect) – people change when observed
-- Researcher bias – personal interpretations
-- Time-consuming and labour-intensive
-- Difficult to replicate exactly`,
+    topic: 'The Nature of Research',
+    question: 'What is qualitative research? What is quantitative research?',
+    answer: '**Qualitative Research:** A form of systematic empirical inquiry into meaning. Researcher relies on participants\' views, asks broad questions, collects words/text data, describes and analyzes for themes.\n\n**Quantitative Research:** The systematic process of collecting numerical data through standardized techniques, using statistical methods to derive insights and generalize findings.\n\n**Key difference:** Qualitative seeks depth in understanding; Quantitative seeks breadth and measurable relationships',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Data Collection Instruments',
-    question: 'Describe Action Research with Cyclical Process',
-    answer: `**Action Research** is a cyclical, participatory approach simultaneously investigating a problem AND taking action to solve it.
-
-**The Cycle:**
-$$\\text{Plan} \\rightarrow \\text{Act} \\rightarrow \\text{Observe} \\rightarrow \\text{Reflect}$$
-
-**Detailed Steps:**
-1. **Plan** – Identify problem, develop intervention strategy
-2. **Act** – Implement intervention/change
-3. **Observe** – Collect data on outcomes, document processes
-4. **Reflect** – Analyse results, identify improvements
-5. **Cycle again** – Refine and repeat until problem solved
-
-**Worked Example:** Improving electrical safety training:
-- **Plan** – Design new safety module
-- **Act** – Deliver to one class
-- **Observe** – Measure pre/post knowledge, safety incidents
-- **Reflect** – What worked? What needs changing?
-- **Cycle 2** – Revise module, deliver to next cohort
-- **Result** – Iteratively improved training effectiveness
-
-**Characteristics:**
-- Integrates research with intervention
-- Practitioner-led improvement
-- Data-informed decision making
-- Cyclical refinement
-- Often occurs within organisations`,
+    topic: 'The Nature of Research',
+    question: 'What are independent, dependent, and extraneous variables?',
+    answer: '**Independent Variable (IV):** The variable manipulated by the researcher; the "cause" or predictor variable\n\n**Dependent Variable (DV):** The variable measured to see the effect of the IV; the "effect" or criterion variable\n\n**Extraneous Variable:** A variable not of interest but could influence the DV. Must be controlled to isolate IV effect on DV\n\n**Confounding Variable:** An extraneous variable that co-varies with the IV, making it impossible to determine which caused the DV change',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Data Collection Instruments',
-    question: 'Define Questionnaire and Compare Question Types',
-    answer: `**Questionnaire** is a series of written questions (open-ended or closed-ended) completed by respondents.
-
-**Types:**
-- **Self-administered** – postal, online, hand-delivered
-- **Interviewer-administered** – face-to-face, phone, recorded
-
-**Question Types:**
-
-| Type | Format | Example | Pros | Cons |
-|------|--------|---------|------|------|
-| **Open-ended** | Blank space for response | "What causes transformer failures?" | Rich detail, unexpected insights | Time-consuming, hard to analyse |
-| **Closed: Yes/No** | Binary choice | "Have you attended safety training?" | Quick, simple | Limits detail |
-| **Closed: Multiple choice** | Fixed options | "Frequency of maintenance: Daily/Weekly/Monthly?" | Quantifiable, consistent | Forces categories |
-| **Likert scale** | Agreement scale 1–5 | "Safety training is essential" | Measurable, statistical | Assumes ordinal data |
-| **Rating scale** | Numeric rating | "Rate safety awareness 1–10" | Comparative | Arbitrary anchors |
-
-**Worked Example:** Workplace electrical safety questionnaire:
-- Q1: "Have you attended safety training?" (Yes/No)
-- Q2: "How often do you inspect circuit breakers?" (Daily/Weekly/Monthly/Rarely)
-- Q3: "I am confident in live-line procedures" (1=Strongly disagree to 5=Strongly agree)
-- Q4: "What improvements would help safety?" (Open-ended)`,
-    difficulty: 'medium'
-  },
-  
-  // ============================================
-  // TOPIC 4: QUALITATIVE & QUANTITATIVE RESEARCH
-  // ============================================
-  
-  {
-    topic: 'Qualitative & Quantitative Research',
-    question: 'Define Qualitative Research with Characteristics',
-    answer: `**Qualitative Research** is an exploratory approach seeking to understand human behaviour, experiences, and social phenomena from the perspective of those involved.
-
-**Core Characteristics:**
-- Collects **non-numerical data** (words, images, observations)
-- Uses **interpretive analysis** (coding, thematic analysis)
-- Explores **meanings and context** rather than testing hypotheses
-- **Flexible design** that evolves as data emerge
-- **Small, purposive samples** (10–30 participants)
-- **Natural settings** – real-world contexts
-- **Researcher involvement** – interpretive, reflexive role
-
-**Methods:**
-- Semi-structured/unstructured interviews
-- Focus groups
-- Participant observation
-- Ethnography
-- Case studies
-- Document/text analysis
-
-**Goal:** Generate rich, contextual understanding of complex phenomena.
-
-**Worked Example:** Understanding why engineers resist new software tool:
-- Interview 15 engineers about tool adoption
-- Observe how they currently work
-- Identify barriers: learning curve, incompatibility, lack of training
-- Develop recommendations based on their experiences`,
-    difficulty: 'easy'
+    topic: 'The Nature of Research',
+    question: 'List four objectives of research',
+    answer: '1) **Descriptive** - Describe a situation or phenomenon\n2) **Correlational** - Explore relationships between variables\n3) **Explanatory** - Explain why things happen\n4) **Exploratory** - Examine feasibility when little is known about the problem'
   },
   
   {
-    topic: 'Qualitative & Quantitative Research',
-    question: 'Compare Quantitative and Qualitative Research Paradigms',
-    answer: `| Aspect | Quantitative | Qualitative |
-|--------|--------------|-------------|
-| **Data** | Numbers, measurements, statistics | Words, images, observations, text |
-| **Sample** | Large (often 100+), random/probability | Small (10–30), purposive/non-probability |
-| **Design** | Structured, predetermined, testing | Flexible, evolving, exploratory |
-| **Control** | High – variables manipulated, controlled | Low – natural settings, minimal intervention |
-| **Analysis** | Statistical tests, percentages, means | Thematic coding, content analysis, narrative |
-| **Generalisation** | Aims for breadth, statistical significance | Aims for depth, contextual understanding |
-| **Researcher role** | Detached, objective, neutral observer | Involved, reflexive, interpretive |
-| **Reliability** | High – replicable, consistent | High – trustworthiness through rich description |
-| **Validity** | Internal (causation), external (generalisation) | Internal (credibility), external (transferability) |
-| **Question** | "How much?" "Does X cause Y?" | "What?" "How?" "Why?" |
-| **Strength** | Generalisable findings, prediction | Deep understanding, unexpected insights |
-| **Weakness** | May miss context, meaning | Not generalisable, time-consuming |
-| **Example** | Survey 500 engineers on safety awareness; t-test differences | Interview 12 engineers on safety barriers; thematic analysis |`,
+    topic: 'The Nature of Research',
+    question: 'What is the helical nature of research?',
+    answer: 'One research project provides new questions and new problems for future research. Research is an ongoing, spiraling process rather than linear or circular. Each study builds on and generates new directions for investigation.'
+  },
+  
+  // ============================================
+  // TOPIC 2: RESEARCH FORMULATION & DESIGN (Cards 51-85)
+  // ============================================
+  
+  {
+    topic: 'Research Formulation & Design',
+    question: 'Define a research problem. What forms can it take?',
+    answer: '**Definition:** A situation or circumstance that requires a solution to be described, explained, or predicted.\n\n**Forms:**\n1) A research question: "Is there a relationship between decentralization and productivity?"\n2) An assumption to challenge: "The average age of male students exceeds female students"\n3) A situation needing explanation or prediction'
+  },
+  
+  {
+    topic: 'Research Formulation & Design',
+    question: 'List criteria for selecting a researchable problem',
+    answer: '**Significance criteria:**\n- Significant and relevant to organized knowledge\n- Theoretical or practical implications\n\n**Research capability criteria:**\n- Measurable concepts and measurable/explainable relationships\n- Non-hypothetical (based on factual evidence)\n\n**Practical criteria:**\n- Arouses genuine researcher interest\n- Within researcher\'s level of expertise\n- Data available in needed format\n\n**Ethical criterion:**\n- Research must not cause harm to subjects',
     difficulty: 'hard'
   },
   
   {
-    topic: 'Qualitative & Quantitative Research',
-    question: 'Explain Strengths and Weaknesses of Qualitative Research',
-    answer: `**Strengths of Qualitative Research:**
-
-1. **Deep understanding** – Contextual, nuanced understanding of complex issues
-2. **Flexible design** – Evolves as patterns emerge; explores unexpected directions
-3. **Captures perspectives** – Participants' voices, meanings, lived experiences
-4. **Theory generation** – Develops hypotheses and frameworks from data
-5. **Holistic view** – Examines interconnections and emergent properties
-6. **Naturalistic** – Real-world settings, authentic behaviours
-7. **Rich detail** – Thick descriptions, exemplary quotes
-
-**Weaknesses of Qualitative Research:**
-
-1. **Limited generalisation** – Findings context-specific; cannot infer to population
-2. **Time-consuming** – Interviews, transcription, analysis very lengthy
-3. **Researcher bias** – Interpretations influenced by researcher's perspectives
-4. **Difficult replication** – Hard to replicate exactly; unique circumstances
-5. **Subjective analysis** – Without statistical checks, conclusions may be biased
-6. **Small samples** – Limited sample size restricts scope
-7. **Resource intensive** – Requires skilled qualitative researchers
-
-**Mitigation Strategies:**
-
-| Weakness | Mitigation |
-|----------|-----------|
-| Researcher bias | Reflexivity, peer debriefing, member checking |
-| Limited generalisation | Purposive sampling ensures diverse perspectives |
-| Replication difficulty | Detailed methodology documentation enables similar studies |
-| Subjective analysis | Systematic coding protocols, audit trails |`,
-    difficulty: 'hard'
-  },
-  
-  // ============================================
-  // TOPIC 5: ETHICS IN RESEARCH
-  // ============================================
-  
-  {
-    topic: 'Ethics in Research',
-    question: 'Define Research Ethics and State Its Importance (5 marks)',
-    answer: `**Research Ethics** refers to the moral principles and professional standards that guide researchers to conduct studies honestly, responsibly, and with respect for participants, animals, and the environment.
-
-**Why Ethics is Important:**
-
-1. **Protection** – Prevents harm to participants (physical, psychological, social, economic)
-2. **Trust** – Maintains public confidence in research institutions and findings
-3. **Integrity** – Prevents fabrication, falsification, plagiarism
-4. **Compliance** – Satisfies legal requirements (ethics board approval, informed consent)
-5. **Credibility** – Ensures research community accepts and builds on findings
-6. **Accountability** – Demonstrates responsible conduct to funders and society
-
-**Core Ethical Principles:**
-- Respect for persons (autonomy, informed consent)
-- Beneficence (maximize benefits, minimize harm)
-- Justice (fair distribution of benefits/burdens)
-- Integrity (honesty, transparency)
-- Accountability (responsibility for consequences)
-
-**Regulatory Bodies:**
-- Institutional Review Boards (IRBs)
-- Ethics Committees
-- Professional associations (IEEE, ACM)`,
-    difficulty: 'easy'
-  },
-  
-  {
-    topic: 'Ethics in Research',
-    question: 'Explain Four Key Ethical Principles with Examples',
-    answer: `**1. Informed Consent (3 marks)**
-Participants must receive FULL information:
-- Purpose of study
-- Procedures and time commitment
-- Risks and potential discomfort
-- Benefits to self and society
-- Right to withdraw anytime without penalty
-- Confidentiality assurances
-
-Consent must be:
-- **Voluntary** – no coercion or undue incentives
-- **Documented** – typically signed form
-- **Informed** – clear language, time for questions
-
-**Example:** Before measuring electricians' reaction times, researcher explains: "You'll perform timed circuit identification tasks. Participation takes 2 hours. No risk. Your results are confidential. You can withdraw anytime. You receive £20 participation fee regardless."
-
----
-
-**2. Anonymity (3 marks)**
-Researcher CANNOT identify which person provided which data.
-
-- No personal identifiers collected (names, numbers, addresses)
-- Data merged with others
-- Even researcher doesn't know contributor identity
-
-**Example:** Online survey with no IP tracking, no login required, no demographic codes linking to individuals. All 500 responses treated as anonymous pool.
-
----
-
-**3. Right to Service (3 marks)**
-Control group participants NOT denied beneficial services.
-
-- If intervention proves effective, must be offered to control group
-- Delayed delivery acceptable
-- Alternative treatments if control withholding unethical
-
-**Example:** Safety training program study. Control group receives training AFTER study completion, not during. Results in improved safety for all.
-
----
-
-**4. Voluntary Participation (3 marks)**
-Participants freely choose involvement; no pressure.
-
-- No coercion from employers, teachers, managers
-- No excessive incentives
-- Can withdraw without negative consequences
-
-**Example:** Asking apprentices to participate in study; making clear: "Your participation is voluntary. Declining won't affect your grades, employment status, or any evaluations."`,
-    difficulty: 'hard'
-  },
-  
-  {
-    topic: 'Ethics in Research',
-    question: 'Define Pilot Study and Explain Its Role',
-    answer: `**Pilot Study** is a small-scale, preliminary test of research design, instruments, and procedures before the main study.
-
-**Purpose:**
-- Identifies problems with question wording (unclear, ambiguous, leading)
-- Tests timing – how long does survey actually take?
-- Finds technical issues (missing response options, confusing instructions)
-- Reveals logistics problems (recruitment, data collection, analysis)
-- Enables refinement before expensive main study
-
-**Worked Example:** Workplace electrical safety questionnaire
-- **Pilot:** Distribute to 10 electricians
-- **Findings:** 
-  - Question 3 misunderstood by 7 people – wording too technical
-  - Survey takes 12 min, not 5 min estimated
-  - Missing response category for "sometimes"
-  - 3 people cannot access online version
-- **Revisions:**
-  - Simplify Question 3 language
-  - Revise time estimate to 15 min
-  - Add "sometimes" option
-  - Provide paper alternative
-- **Main study:** Distribute revised version to 200 electricians
-
-**Advantages:**
-- Saves time and cost – fixes problems early
-- Improves data quality
-- Increases response rates
-- Builds researcher confidence
-- Reduces participant burden`,
-    difficulty: 'easy'
-  },
-  
-  // ============================================
-  // TOPIC 6: DATA ANALYSIS & STATISTICS
-  // ============================================
-  
-  {
-    topic: 'Data Analysis & Statistics',
-    question: 'Explain Roles of Statistics in Research (6 marks)',
-    answer: `**1. Experimental Design**
-- Determine sample size needed (power analysis)
-- Design randomisation procedures
-- Plan replication and block designs
-
-**2. Data Summarisation**
-- Descriptive statistics reduce large datasets to meaningful summaries
-- Mean, median, mode, standard deviation, range
-- Example: 1000 temperature measurements → mean = 45°C, SD = 2.3°C
-
-**3. Statistical Inference**
-- Generalise from sample to population
-- Construct confidence intervals: "population mean lies between 43–47°C with 95% confidence"
-- Enables hypothesis testing
-
-**4. Relationship Identification**
-- Correlation reveals strength of association (r = 0.87 = strong positive)
-- Regression models relationships: Temperature = 20 + 1.5×(Load)
-- Causal claims require experimental design + statistical support
-
-**5. Reliability & Validity Testing**
-- Cronbach's alpha measures internal consistency of scales (α = 0.82 = acceptable)
-- Standard error assesses measurement precision
-- Ensures instruments actually measure intended constructs
-
-**6. Prediction**
-- Time series forecasting: predict next month's power demand
-- Regression prediction: estimate motor efficiency from design parameters
-- Machine learning: classify circuit faults from sensor data`,
-    difficulty: 'hard'
-  },
-  
-  {
-    topic: 'Data Analysis & Statistics',
-    question: 'Define Measures of Central Tendency with Formulas',
-    answer: `**Measures of Central Tendency** are single values summarising the centre or typical value of a dataset.
-
-**1. Mean (Arithmetic Average)**
-$$\\bar{x} = \\frac{\\sum_{i=1}^{n} x_i}{n} = \\frac{x_1 + x_2 + ... + x_n}{n}$$
-
-**Example:** Five motor efficiencies: 0.88, 0.91, 0.89, 0.90, 0.87
-$$\\bar{x} = \\frac{0.88 + 0.91 + 0.89 + 0.90 + 0.87}{5} = \\frac{4.45}{5} = 0.89$$
-
-**Properties:** 
-- Uses all data
-- Sensitive to outliers
-- Most common for statistical tests
-
----
-
-**2. Median**
-Middle value when data ordered ascending. For odd n: $$\\text{position} = \\frac{n+1}{2}$$. For even n: average of two middle values.
-
-**Example:** Five efficiencies ordered: 0.87, 0.88, 0.89, 0.90, 0.91
-$$\\text{Median} = \\text{3rd value} = 0.89$$
-
-**Properties:**
-- Robust to outliers
-- Useful for skewed distributions
-
----
-
-**3. Mode**
-Most frequently occurring value. Data may have one mode (unimodal), two (bimodal), or none.
-
-**Example:** Failures in 20 circuits: 0, 0, 1, 1, 1, 2, 2, 3
-$$\\text{Mode} = 1 \\text{ (appears 3 times)}$$
-
-**Properties:**
-- Useful for categorical data
-- Identifies peak of distribution`,
+    topic: 'Research Formulation & Design',
+    question: 'Explain the problem formulation process (steps)',
+    answer: '**Step 1:** Distinguish the subject area of interest\n\n**Step 2:** Dissect the subject area into sub-areas\n\n**Step 3:** Decide about an area (narrow down)\n\n**Step 4:** Generate research questions\n\n**Step 5:** Formulate objectives (possible answers to questions)\n\n**Step 6:** Assess feasibility of objectives\n\n**Step 7:** Double-check interest and available resources',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Data Analysis & Statistics',
-    question: 'Calculate Mean from Grouped Frequency Data (Worked Example)',
-    answer: `**Formula for Grouped Data Mean:**
-$$\\bar{x} = \\frac{\\sum (f \\cdot x_m)}{\\sum f}$$
-
-where:
-- f = frequency (count in each class)
-- x_m = class midpoint = (lower + upper) / 2
-
-**Worked Example:** Computers sold per shop in 50 stores.
-
-**Step 1: Create frequency table with midpoints**
-
-| Computers sold | Number of stores (f) | Midpoint (x_m) | f × x_m |
-|---|---|---|---|
-| 4–12 | 11 | 8 | 88 |
-| 13–21 | 14 | 17 | 238 |
-| 22–30 | 13 | 26 | 338 |
-| 31–39 | 8 | 35 | 280 |
-| 40–48 | 4 | 44 | 176 |
-| **Total** | **50** | | **1120** |
-
-**Step 2: Calculate**
-$$\\bar{x} = \\frac{1120}{50} = 22.4 \\text{ computers per shop}$$
-
-**Interpretation:** On average, each shop sold 22.4 computers.
-
-**Note:** This is an estimate since we don't know individual shop values, only class intervals.`,
+    topic: 'Research Formulation & Design',
+    question: 'What is a problem statement? What are its characteristics?',
+    answer: '**Problem Statement:** A clear, standalone statement making explicit what you aim to discover or establish. It is specific and actionable.\n\n**Three characteristics of effective problem statement (Andrew & Hildebrand, 1982):**\n1) Reflects felt needs\n2) Non-hypothetical - based on factual evidence\n3) Suggests meaningful and testable hypotheses\n\n**Must include:**\n- What is the problem or defect?\n- Magnitude of the problem?\n- Where is the problem?\n- Why is it important?',
     difficulty: 'hard'
   },
   
   {
-    topic: 'Data Analysis & Statistics',
-    question: 'Explain Measures of Dispersion with Formulas',
-    answer: `**Measures of Dispersion** describe how spread out data are around the central value.
-
-**1. Range**
-$$\\text{Range} = x_{\\text{max}} - x_{\\text{min}}$$
-
-**Example:** Motor speeds: min 1000 RPM, max 1500 RPM
-$$\\text{Range} = 1500 - 1000 = 500 \\text{ RPM}$$
-
-**Limitation:** Only considers extremes, ignores middle 98% of data.
-
----
-
-**2. Variance**
-Population: $\\sigma^2 = \\frac{\\sum (x_i - \\mu)^2}{N}$
-
-Sample: $s^2 = \\frac{\\sum (x_i - \\bar{x})^2}{n-1}$
-
-**Interpretation:** Average squared deviation from mean. Larger variance = more spread.
-
----
-
-**3. Standard Deviation**
-$$\\sigma = \\sqrt{\\sigma^2} \\quad \\text{(population)} \\quad s = \\sqrt{s^2} \\quad \\text{(sample)}$$
-
-**Example:** Motor efficiency: mean = 0.89, SD = 0.03
-- Interpretation: Typical efficiency varies ±0.03 from mean
-- About 68% of motors between 0.86–0.92 (within 1 SD)
-- About 95% between 0.83–0.95 (within 2 SDs) – normal distribution
-
-**Advantage:** Same units as original data; intuitive interpretation.
-
----
-
-**4. Interquartile Range (IQR)**
-$$\\text{IQR} = Q_3 - Q_1$$
-
-**Interpretation:** Range of middle 50% of data. Robust to outliers.
-
-**Summary Table:**
-
-| Measure | Advantages | Disadvantages |
-|---------|-----------|---|
-| Range | Simple | Only extremes |
-| Variance | Mathematical basis | Not intuitive (squared units) |
-| Std Dev | Intuitive, same units | Affected by outliers |
-| IQR | Robust to outliers | Ignores tails |`,
+    topic: 'Research Formulation & Design',
+    question: 'Define research objectives. What does SMART stand for?',
+    answer: '**Research Objectives:** Goals set out to achieve in a study. They inform readers about scope and extent, closely related to problem statement.\n\n**SMART criteria:**\n- **S**pecific - clearly defined and precise\n- **M**easurable - quantifiable with success indicators\n- **A**ppropriate (Attainable) - aligns with target audience needs\n- **R**ealistic - achievable with available resources\n- **T**ime-specific - provides timeframe for completion\n\n**Example:** "By January 2025, increase female engineering majors to 3% of total enrollment"',
     difficulty: 'hard'
   },
   
-  // ============================================
-  // TOPIC 7: REPORT WRITING & DOCUMENTATION
-  // ============================================
-  
   {
-    topic: 'Report Writing & Documentation',
-    question: 'Outline Standard Research Report Chapter Structure',
-    answer: `**Standard Research Report Layout:**
-
-| Chapter | Title | Content |
-|---------|-------|---------|
-| **1** | **Introduction** | Background, problem statement, research questions/objectives, significance, scope, key definitions |
-| **2** | **Literature Review** | Critical summary of existing research, theoretical framework, identification of gaps and contradictions |
-| **3** | **Methodology** | Research design, population/sample, data collection instruments, procedures, ethical considerations, planned analysis |
-| **4** | **Results/Findings** | Presentation of data: tables, figures, graphs, statistical outputs. NO interpretation yet. |
-| **5** | **Discussion** | Interpretation of results, comparison with literature, practical implications, limitations, recommendations |
-| **6** | **Conclusions & Recommendations** | Summary of key findings, contributions to knowledge, suggestions for practice and future research |
-| | **Front Matter** | Title page, abstract, table of contents, list of figures/tables |
-| | **Back Matter** | References/Bibliography, appendices, glossary |
-
-**Professional Formatting Requirements:**
-- **Headers/Footers** – Page numbers, running title
-- **Table of Contents** – Lists chapters, sections, page numbers
-- **Figures/Tables** – Numbered, captioned, referenced in text
-- **Typography** – Consistent fonts, spacing, margins
-- **Academic style** – Formal tone, third person, past tense
-- **Citations** – Harvard or IEEE style throughout
-
-**Word Count:** Thesis typically 40,000–60,000 words; papers 5,000–10,000 words.`,
-    difficulty: 'easy'
-  },
-  
-  {
-    topic: 'Report Writing & Documentation',
-    question: 'Define Abstract, Journal, Bibliography, and References',
-    answer: `**1. Abstract**
-- **Definition:** Concise summary (150–300 words) of research
-- **Contents:** Background/context, research question, methodology, key findings, conclusions
-- **Placement:** Beginning of report/paper
-- **Importance:** 
-  - Allows readers to decide relevance quickly
-  - Used in indexing and databases
-  - Often sole part read by busy professionals
-
----
-
-**2. Journal**
-- **Definition:** Peer-reviewed periodical publishing original research
-- **Format:** Articles vetted by expert reviewers before publication
-- **Examples:** IEEE Transactions on Power Electronics, Nature, The Lancet
-- **Importance:**
-  - Provides validated, authoritative sources
-  - Up-to-date research findings
-  - Citable references for credibility
-  - Building blocks of knowledge advancement
-
----
-
-**3. Bibliography**
-- **Definition:** List of ALL sources consulted during research
-- **Includes:** Sources cited AND those read but not cited
-- **Purpose:** 
-  - Shows breadth of reading/research
-  - Gives credit to other authors
-  - Guides readers to further resources
-
----
-
-**4. References (or Reference List)**
-- **Definition:** List of ONLY sources explicitly cited in text
-- **Inclusion:** Every in-text citation must appear in references
-- **Purpose:**
-  - Allows readers to locate and verify sources
-  - Enables checking author's claims
-  - Prevents plagiarism through attribution
-  - Establishes evidence base
-
-**Example Comparison:**
-- Paper cites 15 sources → 15 items in References
-- Paper read 30 sources but cited 15 → 30 in Bibliography, 15 in References`,
+    topic: 'Research Formulation & Design',
+    question: 'Distinguish between main objectives and specific objectives',
+    answer: '**Main Objective:**\n- Describes overall purpose of research\n- Broad outcomes and concepts\n- What we generally want to accomplish\n\n**Specific Objectives:**\n- State how main objective will be achieved\n- Measurable and concrete\n- Define exactly what you want to see, where, and when\n\n**Example for library services study:**\n\nMain: "To study the effect of library services on student academic performance (2017-2018)"\n\nSpecific: "To compare utilization levels of library services among different academic performance groups"',
     difficulty: 'medium'
   },
   
   {
-    topic: 'Report Writing & Documentation',
-    question: 'Provide Harvard Reference Style Examples (Books)',
-    answer: `**Harvard Referencing System – Books**
-
-**Format:**
-Author(s) surname, Initial(s). (Year) *Title of book: subtitle*. Edition (if not first). Publisher.
-
----
-
-**One Author:**
-Floyd, T.L. (2020) *Electronics Fundamentals: Circuits, Devices and Applications*. 9th edn. Pearson.
-
-**In-text citation:** (Floyd, 2020)
-
----
-
-**Two Authors:**
-Floyd, T.L. and Buchla, D.M. (2020) *Electronics Fundamentals: Circuits, Devices and Applications*. 9th edn. Pearson.
-
-**In-text citation:** (Floyd and Buchla, 2020)
-
----
-
-**Three or More Authors:**
-Rashid, M.H., Muhammad, H. and Hasan, R. (2018) *Power Electronics: Circuits, Devices and Applications*. 4th edn. Pearson.
-
-**In-text citation:** (Rashid et al., 2018)
-
----
-
-**Chapter in Edited Book:**
-Holmes, M. (2019) Renewable energy systems. In: Smith, J. ed. *Sustainable Engineering*. 3rd edn. Oxford University Press, pp. 245–278.
-
-**In-text citation:** (Holmes, 2019, p. 250)
-
----
-
-**Key Rules:**
-- Italicise book title
-- Use 'et al.' for 3+ authors (in-text)
-- List ALL authors in reference list
-- Include edition if not first
-- Format as: Author (Year) *Title*. Publisher.`,
+    topic: 'Research Formulation & Design',
+    question: 'What types of specific objectives exist? Give examples.',
+    answer: '**Three types based on research questions:**\n\n1) **Estimation objectives:** Determine incidence rates or prevalence\n   - Example: "Estimate percentage of unemployed graduates"\n\n2) **Association objectives:** Investigate associations between factors\n   - Example: "Investigate association between study hours and grades"\n\n3) **Evaluation objectives:** Evaluate intervention effectiveness\n   - Example: "Evaluate effectiveness of new teaching method on student performance"',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'Research Formulation & Design',
+    question: 'What action verbs are suitable for research objectives?',
+    answer: '**Recommended action verbs:**\nDetermine, Compare, Verify, Calculate, Describe, Measure, Explain, Identify, Analyze, Evaluate, Assess, Establish, Test, Investigate\n\n**Verbs to AVOID (vague):**\nAppreciates, Understand, Study, Notice, Observe, Believe, Know, Learn, Comprehend\n\n**Why:** Action verbs are specific, measurable, and observable, making objectives clear and testable.'
+  },
+  
+  // ============================================
+  // TOPIC 3: LITERATURE REVIEW (Cards 86-127)
+  // ============================================
+  
+  {
+    topic: 'Literature Review',
+    question: 'Define literature review. What is its purpose?',
+    answer: '**Definition:** A survey of scholarly sources (books, journals, articles, websites) on a specific topic.\n\n**Purpose:**\n- Provides overview of current knowledge\n- Identifies relevant theories and methods\n- Finds gaps in existing research\n- Ensures your research is new and original\n- Demonstrates knowledge of field\n- Shows ability to critically evaluate sources'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'Explain the inverted pyramid model of literature review',
+    answer: '**The Inverted Pyramid has three steps:**\n\n**Step 1:** Identification of problem domain\n- The research field/area where work makes contribution\n\n**Step 2:** Critical discussion of what has been done\n- Categorize major research themes\n- Make critical comparison of papers\n- Identify knowledge gaps\n\n**Step 3:** Identification of knowledge gaps\n- Link gaps directly to research objectives\n\n**Shape significance:** Increased focus from broad problem domain → specific research gaps → clear research objectives',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'Outline the process of developing a literature review',
+    answer: '**Step 1: Define the main topic**\n- Designate sections, subsections, headings following pyramid structure\n- Identify keywords and subject vocabulary\n\n**Step 2: Search the literature**\n- Define databases and sources\n- Set time interval and language criteria\n- Set cut-off year for publications\n\n**Step 3: Analyze the results**\n- Use critical reading skills\n- Evaluate each source\n- Use matrix method for comparison\n\n**Step 4: Write**\n- Express conclusions about others\' work\n- Properly cite and reference\n- Organize by chronology, topic, or pyramid',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'What critical questions should you ask when reading research papers?',
+    answer: '**About the author and argument:**\n1) Who is the author? (credentials, affiliation)\n2) What is the central point or main argument?\n3) Is the research question evident and articulated with previous knowledge?\n\n**About methodology:**\n4) Was the research designed and conducted properly?\n5) What findings and conclusions are made?\n6) Are results and discussion plausible and consistent with objectives and methodology?'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'Explain the matrix method for literature review',
+    answer: '**Matrix Method:** A table comparing and contrasting articles efficiently\n\n**Typical columns:**\n- Author & year\n- Type of study (quantitative/qualitative)\n- Sample size and characteristics\n- Research design\n- Data collection methods\n- Key findings\n- Limitations\n\n**Benefits:**\n- Quickly spot differences and similarities\n- Easily identify gaps in research\n- Organize large amounts of literature\n- Makes synthesis easier'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'Distinguish integral, non-integral, and citation types',
+    answer: '**Integral Citation:** Author\'s name in the sentence\n- Example: "Lillis (2001) argues that tutors lack explicit knowledge"\n\n**Non-Integral Citation:** Author\'s name in parentheses\n- Example: "Tutors lack explicit knowledge (Lillis, 2001)"\n\n**Information-Prominent:** Emphasis on information\n- Example: "Behavior is important (Boger et al., 1974)"\n\n**Author-Prominent:** Author as sentence subject\n- Example: "Close (1983) developed a simplified theory"'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'What should be included in literature review sections?',
+    answer: '**Introduction:**\n- Nature of topic under discussion\n- Parameters (included/excluded)\n- Basis for literature selection\n- Scope and how it ties to research\n\n**Body:**\n- Synthesizes multiple texts in paragraphs\n- Classifies and evaluates themes\n- Uses chronological, topical, or pyramid organization\n\n**Conclusion:**\n- Summary of major agreements/disagreements\n- General conclusions drawn\n- Where thesis sits in literature\n\n**Each paragraph should contain:**\nTopic sentence, definitions, evidence, discoveries, current assumptions, conclusions, link to next idea'
+  },
+  
+  {
+    topic: 'Literature Review',
+    question: 'What is plagiarism? What are types and how to avoid it?',
+    answer: '**Plagiarism:** Taking another\'s work and passing it off as your own\n\n**Three types:**\n1) Copying text directly without quotation marks\n2) Improper paraphrasing (keeping too close to original)\n3) Failing to give proper references or citations\n\n**How to avoid:**\n- Use quotation marks and cite for direct quotes\n- Paraphrase and cite when using ideas\n- Use reference management software (Zotero, Mendeley, EndNote)\n- Run work through anti-plagiarism tools (Turnitin, Grammarly)\n- Maintain detailed notes with proper citations',
     difficulty: 'medium'
   },
   
   // ============================================
-  // TOPIC 8: RESEARCH PARADIGMS & FRAMEWORKS
+  // TOPIC 4: RESEARCH PROPOSAL WRITING (Cards 128-154)
   // ============================================
   
   {
-    topic: 'Research Paradigms & Frameworks',
-    question: 'Define Research Paradigm and Its Components',
-    answer: `**Research Paradigm** is a fundamental worldview that guides research, encompassing philosophical beliefs about the nature of reality, knowledge, and appropriate research methods.
-
-**Three Components:**
-
-**1. Ontology (Nature of Reality)**
-- What is real? Objective or subjective?
-- Does reality exist independently or is it constructed?
-- Are there multiple realities or one?
-
-**2. Epistemology (Nature of Knowledge)**
-- How do we know what we know?
-- What counts as valid knowledge?
-- What is the relationship between knower and known?
-- How is knowledge created/discovered?
-
-**3. Methodology (Research Approach)**
-- How should research be conducted?
-- Which methods are appropriate?
-- How is data collected and analysed?
-
----
-
-**Major Research Paradigms:**
-
-| Aspect | Positivism | Interpretivism |
-|--------|-----------|---|
-| **Ontology** | Objective reality; mind-independent | Subjective; socially constructed |
-| **Epistemology** | Only observable/measurable facts are valid | Knowledge through interpretation and meaning |
-| **Methodology** | Quantitative, experiments, statistics | Qualitative, interviews, thematic analysis |
-| **Aim** | General laws, prediction | Understanding, meaning-making |
-
-**Importance:** Paradigm influences all research decisions:
-- Which questions are asked
-- How data are collected
-- How findings are interpreted
-- What counts as evidence`,
-    difficulty: 'easy'
+    topic: 'Research Proposal Writing',
+    question: 'Define a research proposal. Why is it important?',
+    answer: '**Definition:** A written plan of the study detailing what the researcher intends to do.\n\n**Importance (It serves as a "contract"):**\n- Permits others to learn about intended research and offer suggestions\n- Helps researcher clarify what needs to be done\n- Prevents unintentional problems\n- Protects student from demanding additional requirements\n- Protects committee from poor work delivery'
   },
   
   {
-    topic: 'Research Paradigms & Frameworks',
-    question: 'Describe Positivism Paradigm with Electrical Example',
-    answer: `**Positivism Paradigm Characteristics:**
-
-**Ontology (Reality):**
-- Objective reality exists independently of the researcher
-- One, singular reality
-- Laws of nature are discoverable
-
-**Epistemology (Knowledge):**
-- Only observable, measurable phenomena are valid knowledge
-- Knowledge is value-free (researcher bias excluded)
-- Universal laws apply across contexts
-- Cause-effect relationships can be established
-
-**Methodology:**
-- **Quantitative research**
-- Controlled experiments
-- Surveys with statistical analysis
-- Hypothesis testing
-- Replicable procedures
-- Objective measurement
-
-**Researcher Role:**
-- Detached, neutral observer
-- Objective, unbiased stance
-- Distance from subject matter
-
----
-
-**Worked Example – Electrical Engineering:**
-
-**Research Question:** Does increasing heatsink surface area reduce transistor temperature under load?
-
-**Positivist Approach:**
-1. **Hypothesis:** "Increasing heatsink area by 20% reduces junction temperature by ≥10°C"
-2. **Variables:**
-   - Independent: heatsink surface area (20%, 40%, 60% increase)
-   - Dependent: junction temperature (measured with infrared thermometer)
-   - Control: ambient temp, load current, measurement time, transistor type
-3. **Method:** Laboratory experiment with randomised treatment order
-4. **Measurement:** Precise instruments, replicable procedure
-5. **Analysis:** ANOVA comparing temperature across groups
-6. **Result:** Statistical significance determines acceptance of hypothesis
-7. **Generalisation:** If significant, claim applies to all similar transistors
-
-**Positivism Strengths:** Rigorous, generalisable, objective, replicable
-**Limitations:** May miss contextual meanings, human factors, unexpected findings`,
+    topic: 'Research Proposal Writing',
+    question: 'What five things must a research proposal do?',
+    answer: '1) **Outline steps** in your proposed research\n\n2) **Provide intellectual context** - show how research fits into field\n\n3) **Justify research** - explain significance and need\n\n4) **Be creative** - demonstrate originality and innovation\n\n5) **Think through experiments** - anticipate problems and realistic timetable'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What are the three essential ingredients of a proposal?',
+    answer: '1) **The Issue:** What problem does your research address? What gap will it fill?\n\n2) **Research Design:** How will the research achieve its objective? What methods will you use?\n\n3) **Benefit:** What will the research contribute? What impact will it have?'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'List key elements of a standard research proposal',
+    answer: '1. Title\n2. Introduction\n3. Background of the study\n4. Statement of the problem\n5. Aim and Objectives\n6. Research questions\n7. Scope and limitations\n8. Significance of the study\n9. Literature review (brief)\n10. Methodology\n11. Time schedule/work plan\n12. Budget\n13. Conclusion\n14. References\n15. Appendices',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What are criteria for selecting a good research title?',
+    answer: '1) **Reflect the theme** of the research\n\n2) **Self-explanatory** - understandable without reading proposal\n\n3) **Brief** - concise but complete (usually 10-15 words)\n\n4) **Simple, unambiguous language** - avoid jargon\n\n5) **Specific to domain** - clearly indicates field\n\n6) **Avoid brackets and arithmetic** - professional appearance\n\n7) **Clear meaning** - no confusion about focus'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What should introduction and background contain?',
+    answer: '**Introduction should contain:**\n- Theoretical background\n- Background of the problem\n- Overview from broad picture to narrow research questions\n- Familiarity with previous research\n- Relevance of planned study\n\n**Statement of the Problem should:**\n- Be a short "SO WHAT" statement\n- Include definition, nature, extent of problem\n- Serve as blueprint for literature review\n- Keep committee focused on key issue'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'Distinguish between aims and objectives in proposals',
+    answer: '**Aims:**\n- Short, general statements of intent\n- Answer "what do we want to accomplish overall?"\n- Broad in scope\n\n**Objectives:**\n- Very specific statements\n- Define practical steps to achieve aims\n- Measurable and concrete\n- Answer "what specific steps will we take?"\n\n**Relationship:** Aims are achieved through objectives\n\n**Example:**\nAim: "To study effect of library services on academic performance"\nObjectives: "To compare utilization levels among performance groups"'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What should the scope and limitations section include?',
+    answer: '**Scope - Clear boundaries in terms of:**\n- Time period of study\n- Issues to be addressed\n- Geographic or organizational area of study\n- Population to be studied\n\n**Limitations - Acknowledge:**\n- What is included in study\n- What is excluded from study\n- Shortcomings due to resources\n- Time constraints\n- Access limitations\n\n**Purpose:** Tell reader what is within and outside research boundaries, demonstrating realistic understanding of constraints'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What does the rationale/significance section explain?',
+    answer: '**The Rationale/Significance explains the importance of research:**\n\n- **National context** - addresses problems relevant to nation/region\n- **Knowledge gaps** - bridges gaps in existing knowledge\n- **Usefulness to society** - benefits communities, organizations, or professions\n- **Present state of affairs** - describes current situation\n- **Affected stakeholders** - identifies who benefits\n- **Contribution** - explains unique contribution to field\n\n**Goal:** Convince reader that research deserves time and resources'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What is the purpose of literature review in a proposal? Explain funnel point',
+    answer: '**Literature Review Purpose:**\n- Ensures not "reinventing the wheel"\n- Gives credit to previous work\n- Demonstrates knowledge of problem\n- Shows ability to critically evaluate\n- Integrates existing literature\n- Provides theoretical insights\n- Convinces reader research is significant\n\n**The "Funnel Point":** \nThe purpose of your research, framed as a research question or hypothesis. It is the narrowest point where all literature analysis leads directly to your aims and objectives.',
     difficulty: 'hard'
   },
   
   {
-    topic: 'Research Paradigms & Frameworks',
-    question: 'Describe Interpretivism Paradigm with Qualitative Example',
-    answer: `**Interpretivism (Constructivism) Paradigm Characteristics:**
-
-**Ontology (Reality):**
-- Multiple, subjective realities exist
-- Reality is socially constructed through human interaction
-- Meanings created, not discovered
-
-**Epistemology (Knowledge):**
-- Knowledge built through interpretation and meaning-making
-- Researcher and participants co-construct understanding
-- Context-dependent; no universal laws
-- Values and perspectives shape knowledge
-
-**Methodology:**
-- **Qualitative research**
-- In-depth interviews
-- Participant observation
-- Case studies
-- Ethnography
-- Thematic analysis
-- Rich description
-
-**Researcher Role:**
-- Involved, participatory stance
-- Reflexive (aware of own biases)
-- Interpretive, meaning-seeking
-- Acknowledges subjectivity
-
----
-
-**Worked Example – Electrical Engineering:**
-
-**Research Question:** How do maintenance technicians perceive risks of working on live circuits?
-
-**Interpretivist Approach:**
-1. **Design:** Qualitative case study of one maintenance department
-2. **Participants:** 12 technicians with varying experience (2–20 years)
-3. **Data Collection:** 
-   - Semi-structured interviews (1 hour each)
-   - Participant observation during live-line work (20 hours)
-   - Document review (safety records, incident reports)
-4. **Analysis:**
-   - Transcribe and code interviews
-   - Identify themes: fear, complacency, training gaps, peer influence
-   - Construct narrative of lived experiences
-5. **Understanding:** How cultural context, training, supervision shape risk perception
-6. **Interpretation:** Why some technicians take shortcuts despite training
-7. **Outcome:** Rich description of contextual factors affecting behaviour
-   - Not generalisable to all technicians
-   - Transferable insights for similar contexts
-
-**Interpretivism Strengths:** Deep understanding, contextual, captures meaning
-**Limitations:** Not generalisable, time-consuming, interpretation subjective`,
+    topic: 'Research Proposal Writing',
+    question: 'What should the methodology section contain? What must you show?',
+    answer: '**Methodology section includes:**\n- Selection of appropriate approach (qualitative/quantitative/mixed)\n- Tools/techniques to be used\n- Instrumentation/procedure details\n- Data collection techniques\n- Data processing/analysis techniques\n- Data/information presentation methods\n\n**Three things to demonstrate:**\n1) **Justify** your method choice - why this approach?\n2) **Show understanding** of principles - demonstrate competence\n3) **Prove feasibility** - it can actually be done within constraints'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'What should time schedule and budget include?',
+    answer: '**Time Schedule/Work Plan:**\n- Timeline of assigned tasks\n- Realistic durations for each phase\n- Account for rewrites and edits\n- Include feedback sessions\n- Show milestones and deliverables\n\n**Budget/Estimated Cost:**\n- Resource personnel salaries\n- Support staff costs\n- Stationery and materials\n- Transport and utilities\n- House rents if needed\n- Miscellaneous costs\n- Specific justification for each item\n\n**Purpose:** Demonstrates understanding of research costs and prevents overspending'
+  },
+  
+  {
+    topic: 'Research Proposal Writing',
+    question: 'List common mistakes and best practices in proposal writing',
+    answer: '**Common Mistakes to AVOID:**\n- Not connecting proposed research to literature\n- Insufficient methodology detail\n- Too much/too little on major issues\n- Forgetting table of contents\n- Rambling without clear direction\n- Incorrect citations/references\n- Relying solely on supervisor\n\n**Best Practices (DOs):**\n- Produce professional-looking proposal\n- Make it interesting and informative\n- Use easy-to-read format\n- Present one idea per page\n- Use clear headings/sub-headings\n- Be concise and precise\n- Check spelling and grammar\n- Present in acceptable format',
+    difficulty: 'medium'
+  },
+  
+  // ============================================
+  // TOPIC 5: RESEARCH DESIGN (Cards 155-218)
+  // ============================================
+  
+  {
+    topic: 'Research Design',
+    question: 'Define research design. What are key elements?',
+    answer: '**Definition:** A framework of research methods and techniques chosen by the researcher. A general plan of how you will answer research questions. The type of research problem determines the design, not vice versa.\n\n**Key elements of design plan:**\n- Purposes of the study\n- Strategies to be employed\n- Time dimensions (temporal aspects)\n- Research environment (field vs. lab)\n- Unit of analysis\n- Sampling design\n- Data collection methods\n- Measurement approaches\n- Data analysis procedures',
     difficulty: 'hard'
   },
   
   {
-    topic: 'Research Paradigms & Frameworks',
-    question: 'Compare Validity and Reliability with Types',
-    answer: `**Validity: Are we measuring the RIGHT thing?**
-$$\\text{Validity} = \\text{Accuracy of measurement}$$
-
-**Types of Validity:**
-
-**1. Internal Validity (Causation)**
-- Can we claim X caused Y?
-- Threats: confounding variables, selection bias, regression to mean
-- Addressed by: random assignment, control groups, statistical controls
-- Example: Does new teaching method (X) increase exam scores (Y)? Or did maturation/practice cause improvement?
-
-**2. External Validity (Generalisation)**
-- Can findings be generalised to other populations/settings/times?
-- Threats: unrepresentative sample, artificial lab setting, unique context
-- Addressed by: random sampling, naturalistic settings, diverse samples
-- Example: Does 5 kW motor efficiency result apply to 50 kW motors?
-
-**3. Construct Validity**
-- Does measurement tool actually capture the construct?
-- Example: Does IQ test really measure intelligence, or just test-taking ability?
-
-**4. Content Validity**
-- Does test cover all relevant aspects of construct?
-- Example: Does safety awareness questionnaire assess all dimensions?
-
----
-
-**Reliability: Are we getting CONSISTENT results?**
-$$\\text{Reliability} = \\text{Consistency of measurement}$$
-
-**Aspects:**
-
-**1. Test-Retest Reliability**
-- Same person, same instrument, different times → similar results?
-- Example: IQ test given twice → similar scores
-
-**2. Inter-Rater Reliability**
-- Different observers rate same behaviour → similar scores?
-- Example: Two raters assess safety compliance; Cronbach's α = 0.85 (acceptable)
-
-**3. Internal Consistency**
-- All items in scale measuring same construct?
-- Measured by Cronbach's alpha (α > 0.70 acceptable)
-
----
-
-**Comparison:**
-
-| | Validity | Reliability |
-|---|----------|-----------|
-| **Definition** | Measuring intended construct | Consistent measurement |
-| **Question** | Right thing? | Consistent results? |
-| **Importance** | Essential; can't have valid but unreliable measure | Essential but secondary to validity |
-| **Improvement** | Careful design, theory, piloting | Standardise procedures, train raters |
-| **Example** | Reliable bathroom scale consistently wrong = unreliable AND invalid | Unreliable clock that sometimes shows right time = unreliable but occasionally valid |`,
+    topic: 'Research Design',
+    question: 'What are the three purposes of research design?',
+    answer: '1) **Exploratory Research**\n   - Investigates study questions with new problem areas\n   - Lays groundwork for more definitive research\n   - May not offer final conclusions\n\n2) **Descriptive Research**\n   - Illustrates behavior of specimen population\n   - Only one variable required\n   - Describes, explains, validates findings\n\n3) **Explanatory (Causal) Research**\n   - Understands impact of changes in standard procedures\n   - Experiments are most popular form\n   - Investigates cause-and-effect relationships'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Explain time dimensions in research design',
+    answer: '**Three time dimensions/horizons:**\n\n1) **Cross-sectional studies**\n   - Snapshot at a single point in time\n   - Comparison of groups at one moment\n\n2) **Multiple cross-sectional studies**\n   - Multiple measurement points\n   - Different samples at each time point\n   - Tracks trends over time\n\n3) **Longitudinal studies (true panel)**\n   - Multiple measurement points\n   - Same sample at each time point\n   - Most rigorous for studying change over time'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Explain unit of analysis. Give examples.',
+    answer: '**Definition:** The level of aggregation of data during analysis. The entity being studied as a whole.\n\n**Examples:**\n- **Individuals** - student performance, employee satisfaction\n- **Dyads** - pairs or couples\n- **Groups** - teams, departments, families\n- **Organizations** - companies, schools, hospitals\n- **Cultures** - communities, societies, nations\n\n**Importance:** Must match research questions and data collection methods. Unit of analysis determines sample size and statistical analysis approach.',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'What is contrived vs. non-contrived research environments?',
+    answer: '**Contrived Environment:**\n- Artificial setting\n- Laboratory conditions\n- Researcher controls conditions\n- High internal validity\n- Lower generalizability\n- Example: Controlled lab experiment\n\n**Non-Contrived Environment:**\n- Natural environment\n- Work proceeds normally\n- Field conditions\n- Better generalizability\n- Lower control over variables\n- Example: Workplace observation\n\n**Trade-off:** Control vs. realism'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Distinguish between quantitative and qualitative research approaches',
+    answer: '**Quantitative Research:**\n- Explains phenomena by collecting numerical data\n- Uses mathematically-based methods (statistics)\n- All aspects designed before data collection\n- Data in numbers and statistics\n- Generalize widely, predict results\n- Test causal relationships\n- Deductive approach\n\n**Qualitative Research:**\n- Studies meaning from participant perspectives\n- Asks broad questions\n- Collects words/text data\n- Describes and analyzes for themes\n- Seeks depth not breadth\n- Inductive approach\n- Small sample, naturalistic inquiry',
     difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'List types of quantitative research methods',
+    answer: '**Four types of quantitative research methods:**\n\n1) **Descriptive** - Describe characteristics of a population or phenomenon\n\n2) **Correlational** - Investigate relationships between variables; measures association\n\n3) **Experimental** - Manipulate independent variable; establish causation with control groups\n\n4) **Quasi-experimental** - Examine cause-effect but IV not manipulated; less control than true experiments'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Define experimental research. What are its characteristics?',
+    answer: '**Definition:** A controlled method attempting to establish certainty about IV-DV relationships. Tests if an intervention works to improve some condition.\n\n**Main characteristics:**\n- Controlled manipulation of at least one independent variable\n- Uses experimental and control groups\n- Random assignment of subjects to groups\n- Pre-test and post-test measurements\n- Tight control of extraneous variables\n\n**Logic of experimentation:**\nPre-test observation of DV → Exposure to IV → Post-test observation of DV → Compare post-test to pre-test',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'What are the six conditions for "ideal" experiments?',
+    answer: '1) **Time order of IV established** - IV occurs before DV\n\n2) **IV manipulated** - researcher controls and varies the IV\n\n3) **Relationship between IV and DV established** - clear cause-effect link\n\n4) **Control of rival hypotheses** - alternative explanations ruled out\n\n5) **One control group used** - comparison for experimental group\n\n6) **Random assignment and sampling used** - no selection bias\n\n**Note:** Real-world research rarely achieves all six conditions perfectly'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Define quasi-experimental research and its characteristics',
+    answer: '**Definition:** Examines cause-and-effect relationships, but the independent variable is identified but not manipulated by the researcher.\n\n**Characteristics:**\n- Samples not randomly selected\n- Not all variables controlled\n- Some control group comparison\n- IV naturally varies or researcher assigns conditions\n- More realistic than true experiments\n- Less statistical control than experiments\n\n**When used:** When true experiments impossible due to practical or ethical constraints'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Explain the four scales of measurement with examples',
+    answer: '**1. Nominal Scale:**\n- Categories with no natural order or ranking\n- Examples: gender, blood type, race, eye color, zip code, political party\n\n**2. Ordinal Scale:**\n- Order matters but not the difference between values\n- Examples: education level (high school/BS/MS/PhD), socioeconomic status (low/middle/high), satisfaction rating\n\n**3. Interval Scale:**\n- Order and difference between values meaningful, no true zero\n- Examples: temperature (°F, °C), pH, SAT score, credit score\n\n**4. Ratio Scale:**\n- All properties of interval PLUS true zero point\n- Examples: weight, length, enzyme activity, dose, survival time, temperature in Kelvin',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'What is the basic measurement equation? Define reliability and validity',
+    answer: '**Basic Measurement Equation:**\n$$X = T + E$$\n\nWhere: X = Actual measurement, T = True phenomenon, E = Error in measurement\n\n**Reliability:** A measure\'s ability to yield consistent results each time it is applied. Relates to random error - more reliable = less random error.\n\n**Validity:** The accuracy of the measure - whether it actually measures what it intends to measure. Relates to systematic error.\n\n**Both needed:** A test can be reliable (consistent) but invalid (measuring wrong thing), or valid but unreliable (measuring right thing inconsistently)'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Explain data analysis approaches: descriptive and inferential statistics',
+    answer: '**Descriptive Statistics:**\n- Organize and summarize data\n- Measures: mean, median, mode, range, variance, standard deviation\n- Describe data characteristics\n- Not used for drawing conclusions about population\n\n**Inferential Statistics:**\n- Draw conclusions about population from sample\n- Test hypotheses\n- Estimate population parameters\n- Test for significance of differences\n- Common tests: t-test, ANOVA, regression, chi-square\n\n**Univariate vs. Bivariate analysis:**\n- **Univariate:** Analyzes single variable (age, gender)\n- **Bivariate:** Two variables simultaneously to determine relationships'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'List types of qualitative research methods',
+    answer: '**Seven types of qualitative research:**\n\n1) **Ethnography** - Observation in natural environment focusing on culture\n\n2) **Phenomenology** - Studies lived experience and meaning\n\n3) **Grounded theory** - Theory developed inductively from data\n\n4) **Narrative research** - Studies stories and personal narratives\n\n5) **Case study** - In-depth examination of single unit (person, family, organization)\n\n6) **Participatory action research** - Participants define problems and lead research\n\n7) **Focus groups** - Group discussions to explore themes'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Define mixed methods research. When is it used?',
+    answer: '**Definition:** Both a method and methodology for collecting, analyzing, and integrating quantitative and qualitative research in a single study. Provides better understanding than either approach alone.\n\n**When used:**\n1) One type alone is not enough\n2) Incorporate qualitative into quantitative study\n3) Build from one phase to another\n4) Explore qualitatively then develop instrument\n5) Follow up quantitative study qualitatively\n\n**Characteristics:**\n- Methodological eclecticism\n- Emphasis on diversity\n- Tends toward balance and compromise\n- Iterative, cyclical approach\n- Focus on research question in determining methods',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'Describe the four mixed methods research designs',
+    answer: '**1. Sequential Explanatory:**\n- Quantitative → Qualitative\n- Priority to quantitative\n- Integrate during interpretation\n- Use: explain/contextualize quantitative findings\n\n**2. Sequential Exploratory:**\n- Qualitative → Quantitative\n- Priority to qualitative\n- Use: test elements of theory, develop instruments\n\n**3. Concurrent Triangulation:**\n- Quantitative + Qualitative (simultaneous)\n- Usually equal priority\n- Use: develop complete understanding, cross-validate\n\n**4. Concurrent Nested:**\n- One predominant method with embedded other method\n- Nesting improves predominant method\n- Use: broader and in-depth perspectives'
+  },
+  
+  {
+    topic: 'Research Design',
+    question: 'What should methodology section of thesis include? What tense?',
+    answer: '**Methodology section should describe:**\n1) Participants: who they are, how many, how selected\n2) Materials: equipment, instruments, stimuli used\n3) Design: research design, variables, measurement, statistical techniques\n4) Procedure: step-by-step process\n5) Data analysis: how data will be analyzed\n\n**Tense:** Past tense (use future only if it is a research design proposal)\n\n**Key advice about detail:**\n- Provide enough detail for another researcher to replicate\n- Focus on brevity\n- Avoid unnecessary details not relevant to outcome',
+    difficulty: 'medium'
+  },
+  
+  // ============================================
+  // TOPIC 6: SAMPLING DESIGN (Cards 219-249)
+  // ============================================
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Define population, target population, and accessible population',
+    answer: '**Research Population:**\n- Large collection of individuals/objects with similar characteristics\n- The complete group of interest\n\n**Target Population:**\n- The group researcher is interested in studying\n- Results generalized to this population\n- All members share significant traits\n\n**Accessible (Study) Population:**\n- Population to which conclusions can realistically apply\n- Subset of target population\n- From which researchers draw samples\n- Often the only practical population to access'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Define sampling and sample. What are key assumptions?',
+    answer: '**Sampling:** The process of selecting a small proportion from accessible population to participate in study.\n\n**Sample:** A subset of the population measured to gather data about entire population.\n\n**Two key assumptions behind sampling:**\n\n1) **Representative** - Sample contains most characteristics present in population\n\n2) **Equal and independent chance** - All members given equal and independent chance of selection\n\n**Note:** Sample size is less important than how sample is drawn. A small probability sample free of bias is preferable to larger biased sample.',
+    difficulty: 'medium'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Distinguish subjects, respondents, and participants in research',
+    answer: '**Subjects:**\n- People in a researcher\'s experiment\n- Usually quantitative research\n- Term is more passive\n- Used in scientific research\n- Example: medical experiment subjects\n\n**Respondents:**\n- People who answer questionnaires\n- Usually quantitative research\n- Respond only to questions asked\n- No more, no less detail\n\n**Participants:**\n- People in qualitative studies (interviews, focus groups)\n- Participate and actively contribute\n- Give much more detailed answers\n- More active involvement than subjects or respondents'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Define probability sampling. What is a sampling frame?',
+    answer: '**Probability (Random) Sampling:**\n- Each individual in population has exactly same chance of being selected\n- Researcher can determine statistical likelihood of any case in sample\n- Allows statistical inference\n- Requires sampling frame\n\n**Sampling Frame:**\n- A list of all individual members of population\n- Provides at least theoretical access to each member\n- May be partial (undercover some population)\n- Examples: electoral register, school list, employee directory\n\n**Importance:** Without sampling frame, probability sampling is impossible'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Explain simple random sampling with formula and example',
+    answer: '**Definition:** Sample members selected literally at random from sampling frame.\n\n**Formula:** $$P(\\text{selection}) = \\frac{1}{N}$$\nWhere N = population size\n\n**Methods:** Random number tables, lottery, pin in list, random generator\n\n**Worked Example:**\n- Population: 500 registered professionals\n- Required sample: 50\n- Each professional has probability 1/500 = 0.2%\n- Assign numbers 1-500\n- Use random number generator to select 50 numbers\n- Contact professionals with selected numbers\n\n**Advantages:** Unbiased, statistically rigorous\n**Disadvantages:** Requires complete sampling frame, time-consuming',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Explain systematic sampling with formula and example',
+    answer: '**Definition:** Members selected systematically (every k-th element) rather than randomly.\n\n**Formula:** $$k = \\frac{\\text{Population size}}{\\text{Sample size}}$$\n\n**Steps:**\n1. Calculate k (sampling interval)\n2. Randomly select starting number between 1 and k\n3. Select every k-th element thereafter\n\n**Worked Example:**\n- Population: 1,000 employees\n- Required sample: 100\n- k = 1,000 ÷ 100 = 10\n- Random start: 7\n- Select: 7, 17, 27, 37, 47... continue to 100 selections\n\n**Advantages:** Simpler than simple random, systematic spacing\n**Disadvantages:** Can introduce bias if population has periodic pattern',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Explain stratified random sampling with worked example',
+    answer: '**Definition:** Population divided into homogeneous subgroups (strata), then random sample from each, often proportionally.\n\n**Why use:** Ensures all subgroups represented; reduces sampling error for stratified populations\n\n**Worked Example:**\n- Company workforce: 60% apprentices, 40% journeymen (total 500)\n- Stratify: 300 apprentices, 200 journeymen\n- Sample proportionally: 60 apprentices, 40 journeymen (20% of each)\n- Randomly select 60 from 300 apprentices; 40 from 200 journeymen\n- Total sample = 100 (maintains 60:40 ratio)\n\n**Advantages:** Ensures representation, reduces sampling error\n**Disadvantages:** Need to identify strata, more complex than simple random',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Compare cluster sampling, stage sampling, and multistage sampling',
+    answer: '**Cluster Sampling:**\n- Two-stage: select clusters randomly, then sample ALL within clusters\n- Use when sampling frame unavailable at individual level\n\n**Stage Sampling:**\n- Extension of cluster with more than two stages\n- Example: geographical areas → schools → classes → students\n\n**Multistage Sampling:**\n- Apply multiple sampling methods in successive stages\n- Can combine different methods at different stages\n- More flexible than simple clustering\n\n**When particularly helpful:**\n- Sampling frame not readily available\n- Can be obtained at lower level (e.g., list of schools per area)\n- Large geographic dispersal of population'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Define non-probability sampling and its types',
+    answer: '**Definition:** Used when sampling frame unavailable or cannot contact all population members. Cannot use probability methods, so rely on non-probability methods.\n\n**Four types:**\n\n**1. Convenience (Accidental) Sampling**\n- Select members most easily available\n- Does not attempt to make representative\n- Report information about sample\n\n**2. Purposive (Judgmental) Sampling**\n- Apply experience to select typical cases\n- Researcher judges representativeness\n- Must justify strategy\n\n**3. Quota Sampling**\n- Non-probability equivalent of stratified\n- Set quotas for categories\n- Used in opinion polling\n\n**4. Snowball Sampling**\n- Identify one/two people, ask to identify others\n- Like rolling snowball\n- For hard-to-identify populations'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'Define dimensional and snowball sampling. When used?',
+    answer: '**Dimensional Sampling:**\n- Extension of quota sampling\n- Set quotas for combinations of two or more variables\n- Example: predetermined numbers for each combination of occupation × gender × age group\n- Use: ensuring coverage of multiple variable combinations\n\n**Snowball Sampling:**\n- Identify one/two people with relevant characteristics\n- Ask them to identify others with similar characteristics\n- Those identify more, like rolling snowball expanding\n- Use: when potential members difficult/dangerous to identify\n- Example: hidden populations (undocumented immigrants, homeless, rare disease sufferers)\n\n**Non-probability methods are less rigorous but sometimes necessary'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'What factors determine sample size? Explain each',
+    answer: '**Four factors determine sample size:**\n\n**1. Population Size** - Larger population may need larger sample (but relationship not linear)\n\n**2. Margin of Error (Confidence Interval)** - Percentage indicating how close sample results will be to true population value. Smaller margin requires larger sample.\n\n**3. Confidence Level** - Degree of certainty that sample represents population within margin of error. Common levels: 90%, 95%, 99%. Higher confidence requires larger sample.\n\n**4. Standard Deviation** - How much variation expected among responses. Most researchers set at 0.5 (50%) - the worst-case scenario - to guarantee adequate sample size.\n\n**Formula factors:**\n- **Z-score:** Constant based on confidence level (90%=1.645, 95%=1.96, 99%=2.576)\n- **Slovin\'s formula:** n = N/(1+Ne²) for estimated populations',
+    difficulty: 'hard'
+  },
+  
+  {
+    topic: 'Sampling Design',
+    question: 'What is minimum sample size? What is more important than size?',
+    answer: '**Minimum Sample Size:**\n- Some writers suggest 30 is minimum for any survey\n- Assumes simple statistical analysis\n- If comparing sub-groups, each group must be larger\n- Qualitative research: often 12-30 depending on methodology\n\n**More important than size:**\n- **How the sample is drawn**\n- A small probability sample free of bias is preferable to larger biased/unrepresentative sample\n- Sample quality > sample quantity\n- Representative small sample better than large biased sample'
+  },
+  
+  // ============================================
+  // TOPIC 7: DATA COLLECTION METHODS (Cards 250-277)
+  // ============================================
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'Define data collection instruments. What are examples?',
+    answer: '**Definition:** Data gathering devices used in study - testing devices for measuring a phenomenon.\n\n**Examples:**\n- Paper and pencil tests\n- Questionnaires\n- Interviews (structured/unstructured)\n- Observation guidelines\n- Research tools (scales, inventories)\n- Focus group guides\n- Electronic surveys\n- Biometric devices\n\n**Quality requirements:** Must be valid (measure what intended) and reliable (consistent results)'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'What are five sections of a well-designed questionnaire?',
+    answer: '**1. Introduction**\n- Researcher\'s request for help\n- Brief explanation of purpose\n- Importance of respondent\'s participation\n\n**2. Respondent Identification Data**\n- Name, address, contact information\n- Demographics if appropriate\n\n**3. Instructions**\n- Clear directions for interviewer\n- Clear directions for respondent\n- How to complete survey\n\n**4. Information (Main Body)**\n- Questions and response codes\n- Main content of survey\n- Organized logically\n\n**5. Classification Data**\n- Demographics (age, gender, income, etc.)\n- Usually placed at end\n- May be optional'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'Distinguish closed and open format questions. Give advantages',
+    answer: '**Closed Format Questions:**\n- Respondents choose from several given options\n- Types: multiple choice, yes/no, ranking, Likert scale\n\n**Advantages of closed:**\n- Easy and quick to fill in\n- Easy to code, record, and analyze quantitatively\n- Consistent responses\n- Quantifiable data\n\n**Open Format Questions:**\n- Respondents formulate their own answers\n- Free-form responses\n\n**Advantages of open:**\n- Allows exploration of range of possible themes\n- Captures unexpected responses\n- In-depth understanding\n- Qualitative richness\n\n**Trade-off:** Ease of analysis vs. depth of response'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'List rules for asking good questions in questionnaires',
+    answer: '**Four rules for asking good questions:**\n\n1) **Use short and simple sentences**\n   - Avoid complex grammar\n   - One idea per sentence\n   - Easy to understand\n\n2) **Ask for only one piece of information at a time**\n   - Avoid double-barreled questions\n   - Example: "Do you like the food and service?" (TWO questions)\n   - Better: "Do you like the food?" "Do you like the service?"\n\n3) **Avoid negatives if possible**\n   - "Do NOT avoid studying" is confusing\n   - Better: "Do you study regularly?"\n\n4) **Use clear wording**\n   - Define jargon\n   - Avoid ambiguous terms\n   - Use exact language'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'How should questions be arranged in a questionnaire?',
+    answer: '**Order of questions:**\n\n1) **General to Specific**\n   - Start with broad context\n   - Narrow to specific topics\n   - Prevents priming effects\n\n2) **Easy to Difficult**\n   - Start with simple, non-threatening questions\n   - Build rapport and motivation\n   - Progress to complex questions\n\n3) **Closed Format First**\n   - Begin with closed questions\n   - Follow with open questions\n   - Builds momentum\n\n4) **Relevant to Main Subject First**\n   - Start with questions central to research\n   - Secondary topics later\n\n5) **Do NOT start with demographics/personal questions**\n   - Can discourage participation\n   - Save for middle or end\n\n**Goal:** Maximize response rate and data quality'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'Define observation as a data collection technique. Distinguish overt vs. covert',
+    answer: '**Observation:**\n- Process where respondents observed without interruption\n- Records actual behavior not self-reported\n- Example: shopping patterns assessed by counting vehicles\n\n**Overt Observation:**\n- Everyone knows they are being observed\n- Researcher is visible\n- Participants aware of study\n- May affect natural behavior (Hawthorne effect)\n\n**Covert Observation:**\n- No one knows they are being observed\n- Observer is concealed\n- More natural behavior captured\n- Ethical concerns about informed consent\n\n**Advantage:** Captures actual behavior\n**Disadvantage:** Time-consuming, observer bias possible'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'Define interview and describe types',
+    answer: '**Interview (Kahn & Cannell, 1957):**\n- Purposeful discussion between two or more people\n- Gather valid and reliable data\n- Relevant to research questions and objectives\n\n**Types of interviews:**\n\n**1. Structured Interview**\n- Standard set of questions in exact order\n- Nothing more, nothing less\n- Consistent across all respondents\n- Quantifiable data\n\n**2. Face-to-face Interview**\n- In-person interaction\n- Rich data collection\n- Non-verbal cues observable\n\n**3. Telephone Interview**\n- Remote interaction\n- More economical\n- Less personal\n\n**4. Computer-Assisted Personal Interviewing (CAPI)**\n- Interviewer uses computer/tablet\n- Data entered in real-time\n- Efficient data collection'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'What are strengths and limitations of interviews?',
+    answer: '**Strengths of interviews:**\n\n1) Provide rich, in-depth description of individual experience\n\n2) Particularly useful for complex and sensitive issues\n\n3) Can explain phenomena beyond mere observation\n\n4) Generate new ideas and theories\n\n5) People studied in own environment increases credibility\n\n6) Build rapport with respondents\n\n**Limitations:**\n\n1) Very time-consuming\n\n2) Generate huge amounts of data\n\n3) Data analysis difficult without clear strategy\n\n4) Interpretation of data may be subjective\n\n5) Interviewer bias possible\n\n6) Requires skilled interviewer'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'Define credibility, transferability, dependability, and confirmability',
+    answer: '**Qualitative Research Quality Criteria:**\n\n**1. Credibility:** Trustworthiness - how believable are conclusions? Confidence in "truth" of findings.\n\n**2. Transferability:** Context is well described so findings may apply in other contexts. Results not too context-bound.\n\n**3. Dependability:** Researcher described all factors influencing data. Findings consistent and could be repeated. Like reliability in quantitative.\n\n**4. Confirmability:** Degree of neutrality - findings shaped by respondents, not researcher bias. Like objectivity in quantitative.\n\n**Quantitative equivalents:**\n- Credibility ↔ Internal validity\n- Transferability ↔ Generalizability/External validity\n- Dependability ↔ Reliability\n- Confirmability ↔ Objectivity'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'What is triangulation? Explain types with examples',
+    answer: '**Triangulation:** Cross-checking information and conclusions using multiple procedures or sources. If agreement exists, supports data interpretation. Gets closer to truth but doesn\'t guarantee certainty.\n\n**Types:**\n\n**1. Method Triangulation:**\n- Comparing data from different methods\n- Both quantitative and qualitative\n- Example: Questionnaire on eating habits + Focus group interviews\n\n**2. Researcher Triangulation:**\n- Different people as researchers\n- Increases confirmability and credibility\n- Reduces researcher bias\n\n**3. Data Triangulation:**\n- Multiple data sources\n- Different respondents, times, locations\n\n**4. Theory Triangulation:**\n- Multiple theories to interpret data\n- Different perspectives on findings'
+  },
+  
+  {
+    topic: 'Data Collection Methods',
+    question: 'What is reflexivity in qualitative research?',
+    answer: '**Reflexivity:** The researcher\'s need to constantly be aware of:\n\n1) **How and why** they are conducting the research\n\n2) **When their own beliefs and opinions** might have influenced:\n   - Data collection\n   - Data analysis\n   - Interpretation\n\n3) **Their positionality** - their relationship to the subject\n\n4) **Their assumptions** about the research topic\n\n**Importance:** \n- Acknowledges researcher is not neutral\n- Increases transparency\n- Enhances credibility\n- Part of confirmability\n- Demonstrated through reflective journal or discussion of limitations'
+  },
+  
+  // ============================================
+  // TOPIC 8: DATA ANALYSIS (Cards 278-304)
+  // ============================================
+  
+  {
+    topic: 'Data Analysis',
+    question: 'What are quality control techniques before analyzing data?',
+    answer: '**Data quality control before analysis:**\n\n1) **Check if values within normal range**\n   - Identify outliers and extreme values\n   - Determine if realistic\n\n2) **Verify samples taken under normal conditions**\n   - No unusual circumstances during collection\n   - Consistent methodology\n\n3) **Check if outside values within previous extremes**\n   - Compare to historical data\n   - Ensure consistency\n\n4) **Check for data recorded as "under detection limit"**\n   - Note any missing or imputed values\n   - Understand measurement limitations\n\n5) **Compare data to seasonal expectations**\n   - Account for temporal patterns\n   - Contextual validation\n\n**Goal:** Ensure data integrity before statistical analysis'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'What is an outlier? What are the five steps of data quality assessment?',
+    answer: '**Outlier:** Data that are either very large or very small compared to all or most other numbers. May indicate:\n- Data entry error\n- Measurement error\n- Genuine unusual case\n- Needs investigation\n\n**Five steps of data quality assessment:**\n\n1) **Output** - Describe the data you have\n\n2) **Select the statistical method** - Choose appropriate analysis\n\n3) **Identify assumptions** - Understand method requirements\n\n4) **Perform the statistical method** - Execute analysis\n\n5) **Evaluate the results** - Interpret and validate findings\n\n**Sequential process:** Each step builds on previous'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'What should you do before applying statistical tests?',
+    answer: '**Before statistical testing, always:**\n\n1) **Group/visualize data**\n   - Create charts, graphs, plots\n   - Look for outliers\n   - Clean data\n\n2) **Explore with summary statistics**\n   - Calculate basic descriptive stats\n   - Get data overview\n\n3) **Try measures of central tendency**\n   - Mean, median, mode\n   - Understand typical value\n\n4) **Describe using measures of spread**\n   - Range, variance, standard deviation\n   - Understand variability\n\n5) **Present data using appropriate formats**\n   - Frequencies, tables, charts, graphs\n   - Visual inspection\n\n**Purpose:** Understand data before formal testing; identify data problems early'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'Define cross tabulation. How should variables be arranged?',
+    answer: '**Cross Tabulation (Crosstabs):**\n- Presentational device with rows and columns\n- For nominal data (rows) and ordinal data (columns)\n- Shows relationships between categorical variables\n\n**Arrangement:**\n- **Dependent Variable Headings:** Horizontally (across columns)\n- **Independent Variable Headings:** Vertically (down rows)\n\n**Purpose:**\n- Present two or more variables simultaneously\n- Study simultaneous effects\n- Compare frequencies across groups\n\n**Recommendation:**\n- Use percentages instead of frequencies\n- Easier for comparison and interpretation\n- Shows proportional relationships'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'When should different charts be used? Explain types',
+    answer: '**Chart Selection Guide:**\n\n**1. Bar Charts**\n- Categorical and discrete data\n- Show highest and lowest values\n- Compare categories\n\n**2. Histograms**\n- Continuous data\n- Show distribution\n- Bars represent frequency intervals\n\n**3. Line Graphs**\n- Show trends over time\n- Continuous data\n- Single or multiple variables\n\n**4. Pie Charts**\n- Show proportions\n- Parts of a whole\n- Percentages\n\n**5. Boxplots (Box-and-Whisker)**\n- Distribution of multiple variables\n- Show range and medians\n- Compare several groups\n\n**6. Scatterplots**\n- Relationship between two variables\n- Several variable pairs\n- Correlation visualization\n\n**Guideline:** Avoid unnecessary 3D; only use third dimension if provides additional information'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'Define stem-and-leaf plots and explain their construction',
+    answer: '**Stem-and-Leaf Plot:** A graphical representation splitting each data value into "stem" (all digits except last) and "leaf" (last digit).\n\n**How to create:**\n\n1) Split each data value into stem and leaf\n   - Example: 36 becomes 3 | 6 (stem=3, leaf=6)\n\n2) Group numbers with same stems\n   - All 20s together, all 30s together, etc.\n\n3) List stems in numerical order vertically\n\n4) List leaves in numerical order horizontally\n\n5) Title the graph\n\n6) Provide legend\n   - Example: "3 | 6 means 36"\n\n**Advantages:**\n- Shows distribution\n- Retains original data values\n- Quick to construct\n- Good for small datasets'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'Explain positively and negatively skewed distributions',
+    answer: '**Positively Skewed (Right Skewed):**\n- Majority of data values fall to LEFT of mean\n- Cluster at lower end\n- Tail extends to RIGHT\n- Mean > Median > Mode\n- Example: Income distribution (few very high earners)\n\n**Negatively Skewed (Left Skewed):**\n- Majority of data values fall to RIGHT of mean\n- Cluster at upper end\n- Tail extends to LEFT\n- Mean < Median < Mode\n- Example: Test scores (few very low performers)\n\n**Symmetric (Normal) Distribution:**\n- Mean = Median = Mode\n- Bell curve shape\n- Half data on each side\n\n**Importance:** Affects choice of descriptive statistics and statistical tests'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'Define frequency polygon and ogive curve',
+    answer: '**Frequency Polygon:**\n- Graphical representation of distribution of continuous variable\n- Connects midpoints of histogram bars with lines\n- Shows distribution shape\n- Alternative to histogram\n\n**Ogive Curve (Cumulative Frequency Curve):**\n- Shows cumulative frequency distribution\n- Ascending curve\n- Useful for determining:\n  - Median value\n  - Percentiles\n  - Quartiles\n- "S" shaped curve for normal distribution\n- Can be used to estimate values'
+  },
+  
+  {
+    topic: 'Data Analysis',
+    question: 'What are four classifications of data for tabulation?',
+    answer: '**Four classifications of data for tabulation:**\n\n1) **Geographical Classification**\n   - Data organized by location/region\n   - By state, city, country, etc.\n   - Example: Sales by region\n\n2) **Chronological Classification**\n   - Data organized by time\n   - By year, month, quarter, etc.\n   - Example: Annual revenue 2020-2024\n\n3) **Qualitative Classification**\n   - According to attributes/characteristics\n   - Non-numeric categories\n   - Example: By gender, marital status, color\n\n4) **Quantitative Classification**\n   - According to class intervals\n   - Numeric ranges\n   - Example: Age groups 18-25, 26-35, 36-45\n\n**Purpose:** Organizing data for clarity and analysis'
+  },
+  
+  // ============================================
+  // TOPIC 9: RESEARCH FINDINGS & DISCUSSION (Cards 305-327)
+  // ============================================
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What is the purpose of the Results section? How should it begin?',
+    answer: '**Purpose of Results section:**\n- Report key findings and statistical analyses conducted\n- Summarize findings rather than provide great detail\n- Present results without commenting on them\n- Pure facts, no interpretation\n\n**How to begin Results:**\n- With **descriptive (summary) statistics**\n- Mean, median, range, etc.\n- Summary table of descriptive statistics\n- Establish baseline data characteristics\n\n**Tense:** Past tense\n- Example: "A total of 417 samples contained..."\n- "The average temperature was..."\n- "This difference was not statistically significant"'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What is the relationship between text and tables/figures in Results?',
+    answer: '**Text-Table/Figure Relationship:**\n\n**NOT extensive overlap**\n- Don\'t repeat tables verbatim in text\n- Don\'t say "See Table 3 below" then repeat all data\n\n**Recommended approach:**\n- Text presents ONLY main points from tables/figures\n- Emphasize the finding, not the table\n\n**Good example:**\n"Researchers who attended the workshop published twice as many papers per year (Table 3)."\n\n**Bad example:**\n"Table 3 shows that researchers who attended published twice as many papers per year..."\n\n**Best practice:**\n- Use text to highlight key results\n- Refer to figures for supporting detail\n- Let data speak through visualization'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What is the function of the Discussion section? What should it include?',
+    answer: '**Function of Discussion:**\n- Give MEANING to results (the "why")\n- Place results in context of theory/conceptual framework\n- Place results in context of previous research\n- Assess importance of findings\n- Acknowledge limitations\n- Identify new areas for exploration\n\n**Key difference from Results:**\n- Results = facts, unedited hard data\n- Discussion = what results mean, implications\n\n**Discussion DOES NOT include:**\n- New results not in Results section\n- Buried important literature (that\'s Background\'s role)\n- Extensive repetition of Background'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'Explain the structure of a Discussion section',
+    answer: '**Typical Discussion Structure:**\n\n1) **Principal Findings**\n   - Summarize major findings\n   - Shift from numeric data to descriptive words\n   - Do not introduce new results\n\n2) **Interpretation of Findings**\n   - Explain what findings mean\n   - State consistency with previous research\n   - Posit why differences exist\n   - Do not restate Background content\n\n3) **Interpretation in Context of Literature**\n   - How findings fit with body of literature\n   - Relate to theories introduced\n   - Compare and contrast with other studies\n\n4) **Implications**\n   - How results might be generalized\n   - Operational implications\n   - Methodological implications\n   - New considerations from findings\n\n5) **Limitations**\n   - Thoughtful acknowledgment\n   - Demonstrate knowledge of constraints\n   - Preempt reviewer criticism\n\n6) **Summary/Conclusion**\n   - Brief summary of findings\n   - Bottom line message'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What are the "deadly questions" Discussion must answer?',
+    answer: '**Two "deadly questions" Discussion must answer:**\n\n**1. "So What?"**\n- Why do these findings matter?\n- What is their significance?\n- How are they important to the field?\n- What is the practical/theoretical value?\n\n**2. "Who Cares?"**\n- What stakeholders should care about these results?\n- Who is affected?\n- Who can use these findings?\n- Practitioners, researchers, policymakers, public?\n\n**If you cannot answer these questions convincingly:**\n- Your research may lack significance\n- Your Discussion section is weak\n- Your findings may not matter\n\n**Strong Discussion answers both questions clearly and compellingly**'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What should the Conclusion do? How does it differ from Summary?',
+    answer: '**Conclusion should:**\n- Succinctly summarize implications of findings\n- NOT make sweeping statements beyond data\n- Present bottom line message and value\n- Tell reader what to take away\n- Be memorable and impactful\n\n**Summary vs. Conclusion:**\n\n**Summary:**\n- Summarizes findings\n- Factual recap\n- "What we found"\n\n**Conclusion:**\n- Ultimate take-away message\n- Implications and significance\n- "What it means"\n- "What to do with it"\n\n**Note:** Sometimes Summary of Discussion section serves as Conclusion.\n\n**Key difference:** Summary repeats; Conclusion interprets and implies'
+  },
+  
+  {
+    topic: 'Research Findings & Discussion',
+    question: 'What does data summarization (data condensation) involve?',
+    answer: '**Data Summarization (Condensation) Involves:**\n\n1) **Classification**\n   - Organize into categories\n   - Group similar items\n\n2) **Tabulation**\n   - Create tables\n   - Organize in rows/columns\n   - Display systematically\n\n3) **Presenting using graphs/diagrams**\n   - Visual representations\n   - Charts, bar graphs, histograms\n   - Easy to interpret\n\n4) **Using summary statistical measures**\n   - Mean, median, mode (central tendency)\n   - Range, variance, standard deviation (spread)\n   - Percentiles, quartiles\n\n**Purpose:**\n- Reduce large amounts of data to comprehensible form\n- Identify patterns and trends\n- Facilitate communication\n- Support analysis'
   }
 ];
+
+export const EXAM_CARD_TOPICS = [
+  'The Nature of Research',
+  'Research Formulation & Design',
+  'Literature Review',
+  'Research Proposal Writing',
+  'Research Design',
+  'Sampling Design',
+  'Data Collection Methods',
+  'Data Analysis',
+  'Research Findings & Discussion'
+];
+
+export const TOTAL_CARDS_COUNT = RESEARCH_METHODS_CARDS.length;
