@@ -30,10 +30,10 @@ function Landing() {
           <div className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-xs text-secondary mb-6">
             <Zap className="h-3 w-3" /> Built from real National Diploma past papers
           </div>
-          <img src={logo} alt="Industrial Automation logo" className="mx-auto h-28 w-auto mb-6 drop-shadow-[0_0_60px_rgba(99,102,241,0.55)]" />
+          <img src={logo} alt="Research Methods logo" className="mx-auto h-28 w-auto mb-6 drop-shadow-[0_0_60px_rgba(99,102,241,0.55)]" />
           <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-tight text-white">
-            Stop re-reading notes.<br />
-            <span className="text-brand-gradient">Start passing Automation.</span>
+            Master Research Methods.<br />
+            <span className="text-brand-gradient">Ace your exam with confidence.</span>
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-lg text-white/80">
             Every concept that has ever appeared in your exam, rebuilt as flip-cards your brain actually remembers.
@@ -61,10 +61,10 @@ function Landing() {
           <Card className="p-8 md:p-12 bg-card text-card-foreground shadow-card-elev">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-4">You already know what's coming.</h2>
+                <h2 className="text-3xl font-bold mb-4">Research methods repeat across every exam.</h2>
                 <p className="text-muted-foreground">
-                  The same Boolean simplifications. The same Laplace transforms. The same partial fraction tricks.
-                  The same five sensors, the same PLC ladder, the same hydraulic schematic. Year after year.
+                  Sampling techniques. Ethics principles. Research design patterns. Statistical analysis methods.
+                  Data collection instruments. Report writing standards. The same concepts tested year after year.
                 </p>
                 <p className="mt-4 font-semibold">
                   The students who pass aren't smarter. <span className="text-brand-gradient">They've just seen the questions before.</span>
@@ -72,10 +72,10 @@ function Landing() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { i: Brain, n: "75+", l: "cards drawn from real papers" },
-                  { i: Trophy, n: "100%", l: "model-answer accuracy" },
-                  { i: Clock, n: "15 min", l: "a day is enough" },
-                  { i: BookOpen, n: "5", l: "complete past paper sets" },
+                  { i: Brain, n: "250+", l: "revision cards from 5 papers" },
+                  { i: Trophy, n: "100%", l: "exam-standard answers" },
+                  { i: Clock, n: "20 min", l: "daily revision is enough" },
+                  { i: BookOpen, n: "8", l: "research topics covered" },
                 ].map(({ i: Icon, n, l }) => (
                   <div key={l} className="rounded-xl border border-black/20 p-4 text-center bg-white">
                     <Icon className="h-5 w-5 mx-auto text-secondary mb-2" />

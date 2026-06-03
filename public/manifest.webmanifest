@@ -1,7 +1,7 @@
 {
-  "name": "INDUSTRIAL AUTOMATION",
-  "short_name": "Industrial Automation",
-  "description": "Master Automation. Real exam questions as interactive flashcards.",
+  "name": "RESEARCH METHODS",
+  "short_name": "Research Methods",
+  "description": "Master Research Methods. Real exam questions as interactive flashcards.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

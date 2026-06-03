@@ -52,7 +52,7 @@ function RequestAccessPage() {
           <ArrowLeft className="h-4 w-4 mr-1" /> Back
         </Link>
         <Link to="/" className="flex justify-center mb-6">
-          <img src={logo} alt="Industrial Automation" className="h-16" />
+          <img src={logo} alt="Research Methods" className="h-16" />
         </Link>
 
         {done ? (
