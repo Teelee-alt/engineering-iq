@@ -70,14 +70,36 @@ function Dashboard() {
           )}
         </div>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold"><Link to="/search" className="text-white"><Search className="h-4 w-4 mr-1" /> Search all cards</Link></Button>
-          <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold">
-            <Link to="/bookmarks" className="text-white">
-              <Star className="h-4 w-4 mr-1 fill-amber-400 text-amber-400" /> My bookmarks
-              {bookmarks.length > 0 && <Badge className="ml-2 bg-amber-400/20 border-amber-400/40 text-amber-300">{bookmarks.length}</Badge>}
-            </Link>
-          </Button>
+        <div className="flex flex-col gap-4 mb-8">
+          <div className="flex flex-wrap gap-2">
+            <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold"><Link to="/search" className="text-white"><Search className="h-4 w-4 mr-1" /> Search all cards</Link></Button>
+            <Button asChild className="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white border-0 font-semibold">
+              <Link to="/bookmarks" className="text-white">
+                <Star className="h-4 w-4 mr-1 fill-amber-400 text-amber-400" /> My bookmarks
+                {bookmarks.length > 0 && <Badge className="ml-2 bg-amber-400/20 border-amber-400/40 text-amber-300">{bookmarks.length}</Badge>}
+              </Link>
+            </Button>
+          </div>
+          
+          {/* EXAM Mode Card */}
+          <Card className="p-6 bg-gradient-to-r from-orange-600/30 to-red-600/20 border-orange-500/40 hover:border-orange-500/60 transition">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="h-12 w-12 rounded-lg bg-gradient-to-br from-orange-600 to-red-600 flex items-center justify-center">
+                  <Zap className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-white text-lg">EXAM Mode</h3>
+                  <p className="text-white/80 text-sm">Comprehensive exam-level questions from past papers</p>
+                </div>
+              </div>
+              <Button asChild className="bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 text-white border-0 font-semibold whitespace-nowrap">
+                <Link to="/exam-mode" className="text-white">
+                  Start Exam <ArrowRight className="h-4 w-4 ml-2" />
+                </Link>
+              </Button>
+            </div>
+          </Card>
         </div>
 
         {fetching ? (
