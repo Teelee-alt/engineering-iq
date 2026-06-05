@@ -2,7 +2,7 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/use-auth";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png";
-import { LogOut, Shield, User as UserIcon, LifeBuoy, ArrowLeft } from "lucide-react";
+import { LogOut, Shield, User as UserIcon, LifeBuoy, ArrowLeft, BookOpen } from "lucide-react";
 import { useRef } from "react";
 import { InstallAppButton } from "@/components/InstallAppButton";
 
@@ -43,6 +43,9 @@ export function AppHeader({ showBack = false, backTo = "/" }: { showBack?: boole
             <>
               <Button variant="ghost" size="sm" asChild className="text-white hover:text-white hover:bg-white/10">
                 <Link to="/dashboard">Dashboard</Link>
+              </Button>
+              <Button variant="ghost" size="sm" asChild className="text-white hover:text-white hover:bg-white/10">
+                <Link to="/notes"><BookOpen className="h-4 w-4 mr-1" /> Materials</Link>
               </Button>
               <Button variant="ghost" size="sm" asChild className="text-white hover:text-white hover:bg-white/10">
                 <Link to="/profile"><UserIcon className="h-4 w-4 mr-1" /> Profile</Link>

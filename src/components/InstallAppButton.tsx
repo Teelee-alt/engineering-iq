@@ -40,7 +40,7 @@ export function InstallAppButton({ className = "" }: { className?: string }) {
   };
 
   return (
-    <Button onClick={install} variant="outline" size="sm" className={className}>
+    <Button onClick={install} size="lg" className={`bg-brand-gradient text-primary-foreground shadow-glow text-base hover:bg-brand-gradient ${className}`}>
       <Download className="h-4 w-4 mr-1" /> Install App
     </Button>
   );
