@@ -16,7 +16,6 @@ function RequestAccessPage() {
   const nav = useNavigate();
   const [full_name, setName] = useState("");
   const [whatsapp, setWa] = useState("");
-  const [email, setEmail] = useState("");
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
   const [agentName, setAgentName] = useState<string>("Contact admin for agent details");
@@ -27,15 +26,12 @@ function RequestAccessPage() {
   }, []);
 
   const send = async () => {
-    if (!full_name.trim() || !whatsapp.trim() || !email.trim()) {
-      return toast.error("Full name, WhatsApp number and email are all required");
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      return toast.error("Enter a valid email address");
+    if (!full_name.trim() || !whatsapp.trim()) {
+      return toast.error("Full name and WhatsApp number are required");
     }
     setBusy(true);
     try {
-      await accessApi.submit({ full_name, whatsapp, email });
+      await accessApi.submit({ full_name, whatsapp });
       setDone(true);
       toast.success("Request submitted");
     } catch (e: any) {
@@ -60,9 +56,8 @@ function RequestAccessPage() {
             <CheckCircle2 className="h-12 w-12 text-secondary mx-auto" />
             <h2 className="text-2xl font-bold">Request received</h2>
             <p className="text-sm text-muted-foreground">
-              Now pay an authorised agent in cash ($5 solo / $8 pair). The agent will call admin
-              with your name. Once admin confirms payment, your <strong>access code will be emailed
-              to {email || "your email"}</strong>. Come back here and sign in with your full name + code.
+              Now pay an authorised agent in cash ($5 solo / $8 pair). The agent will notify admin
+              with your name. Once admin confirms payment, your <strong>access code will be sent via WhatsApp</strong>. Come back here and sign in with your full name + code.
             </p>
             <Button onClick={() => nav({ to: "/sign-in" })} className="bg-brand-gradient w-full">
               Go to sign in
@@ -91,13 +86,6 @@ function RequestAccessPage() {
                   placeholder="+263 7X XXX XXXX"
                   maxLength={40}
                 />
-              </div>
-              <div>
-                <Label className="flex items-center gap-1">
-                  <Mail className="h-3 w-3" /> Email *
-                </Label>
-                <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={255} placeholder="you@example.com" />
-                <p className="text-xs text-muted-foreground mt-1">Your access code will be sent to your email after admin approves your payment.</p>
               </div>
               <Button onClick={send} disabled={busy} className="w-full bg-brand-gradient">
                 <UserPlus className="h-4 w-4 mr-2" /> {busy ? "Submitting…" : "Submit request"}

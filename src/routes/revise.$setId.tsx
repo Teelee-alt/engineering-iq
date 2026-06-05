@@ -58,9 +58,8 @@ function Revise() {
   }
 
   const isFull = profile?.access_level === "full";
-  const freeLimit = set.free_card_limit ?? 5;
   const card = cards[idx];
-  const locked = !isFull && idx >= freeLimit;
+  const locked = false; // All cards available to all users
   const progress = ((idx + 1) / cards.length) * 100;
 
   const goNext = () => { setIdx((i) => Math.min(cards.length - 1, i + 1)); setFlipped(false); };

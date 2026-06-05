@@ -15,6 +15,7 @@ import { Route as SearchRouteImport } from './routes/search'
 import { Route as RequestAccessRouteImport } from './routes/request-access'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as OfflineRouteImport } from './routes/offline'
+import { Route as NotesRouteImport } from './routes/notes'
 import { Route as ExamModeRouteImport } from './routes/exam-mode'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as BookmarksRouteImport } from './routes/bookmarks'
@@ -52,6 +53,11 @@ const ProfileRoute = ProfileRouteImport.update({
 const OfflineRoute = OfflineRouteImport.update({
   id: '/offline',
   path: '/offline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotesRoute = NotesRouteImport.update({
+  id: '/notes',
+  path: '/notes',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExamModeRoute = ExamModeRouteImport.update({
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/exam-mode': typeof ExamModeRoute
+  '/notes': typeof NotesRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -119,6 +126,7 @@ export interface FileRoutesByTo {
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/exam-mode': typeof ExamModeRoute
+  '/notes': typeof NotesRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -136,6 +144,7 @@ export interface FileRoutesById {
   '/bookmarks': typeof BookmarksRoute
   '/dashboard': typeof DashboardRoute
   '/exam-mode': typeof ExamModeRoute
+  '/notes': typeof NotesRoute
   '/offline': typeof OfflineRoute
   '/profile': typeof ProfileRoute
   '/request-access': typeof RequestAccessRoute
@@ -154,6 +163,7 @@ export interface FileRouteTypes {
     | '/bookmarks'
     | '/dashboard'
     | '/exam-mode'
+    | '/notes'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -170,6 +180,7 @@ export interface FileRouteTypes {
     | '/bookmarks'
     | '/dashboard'
     | '/exam-mode'
+    | '/notes'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -186,6 +197,7 @@ export interface FileRouteTypes {
     | '/bookmarks'
     | '/dashboard'
     | '/exam-mode'
+    | '/notes'
     | '/offline'
     | '/profile'
     | '/request-access'
@@ -203,6 +215,7 @@ export interface RootRouteChildren {
   BookmarksRoute: typeof BookmarksRoute
   DashboardRoute: typeof DashboardRoute
   ExamModeRoute: typeof ExamModeRoute
+  NotesRoute: typeof NotesRoute
   OfflineRoute: typeof OfflineRoute
   ProfileRoute: typeof ProfileRoute
   RequestAccessRoute: typeof RequestAccessRoute
@@ -254,6 +267,13 @@ declare module '@tanstack/react-router' {
       path: '/offline'
       fullPath: '/offline'
       preLoaderRoute: typeof OfflineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notes': {
+      id: '/notes'
+      path: '/notes'
+      fullPath: '/notes'
+      preLoaderRoute: typeof NotesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exam-mode': {
@@ -323,6 +343,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookmarksRoute: BookmarksRoute,
   DashboardRoute: DashboardRoute,
   ExamModeRoute: ExamModeRoute,
+  NotesRoute: NotesRoute,
   OfflineRoute: OfflineRoute,
   ProfileRoute: ProfileRoute,
   RequestAccessRoute: RequestAccessRoute,

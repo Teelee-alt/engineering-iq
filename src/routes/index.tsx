@@ -94,9 +94,9 @@ function Landing() {
           <p className="text-center text-white/70 mb-10">No downloads required. No setup. Open and revise.</p>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { i: Sparkles, t: "1. Request access", d: "Enter your full name, WhatsApp number and email. The system needs your email to send your access code." },
-              { i: KeyRound, t: "2. Pay an agent", d: `Hand over $${solo} (solo) or $${pair} (two of you together) to an authorised agent. Agent calls admin with your name. Admin approves.` },
-              { i: Cpu, t: "3. Get code by email", d: "Your access code arrives by email. Sign in with your full name + code, every card unlocks. Install to your phone and revise offline." },
+              { i: Sparkles, t: "1. Request access", d: "Enter your full name and WhatsApp number. Admin approves your request." },
+              { i: KeyRound, t: "2. Pay an agent", d: `Hand over $${solo} (solo) or $${pair} (two of you together) to an authorised agent. Agent notifies admin after payment.` },
+              { i: Cpu, t: "3. Get access code", d: "Admin sends your access code via agent or WhatsApp. Sign in with your full name + code, every card unlocks. Install to your phone and revise offline." },
             ].map(({ i: Icon, t, d }) => (
               <Card key={t} className="p-6 bg-card text-card-foreground shadow-card-elev hover:border-secondary transition border-2 border-transparent">
                 <div className="h-12 w-12 rounded-lg bg-brand-gradient flex items-center justify-center mb-4">
@@ -148,7 +148,7 @@ function Landing() {
             {[
               { i: BookOpen, t: "Real exam content", d: "Five full past paper sets, model answers verified." },
               { i: Download, t: "Install on phone", d: "Add to home screen, revise even offline." },
-              { i: Mail, t: "Real human support", d: "industrialautomation@gmail.com" },
+              { i: Mail, t: "Real human support", d: "powerelectronics1@gmail.com" },
             ].map(({ i: Icon, t, d }) => (
               <Card key={t} className="p-4 bg-card text-card-foreground">
                 <Icon className="h-5 w-5 text-secondary mb-2" />

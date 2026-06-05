@@ -42,7 +42,7 @@ Deno.serve(async (req) => {
       <div style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:16px;margin:16px 0">
         <p style="margin:0 0 12px 0;color:#cbd5e1;font-size:14px;font-weight:600">How to sign in:</p>
         <ol style="margin:0;padding-left:20px;color:#cbd5e1;font-size:14px">
-          <li style="margin-bottom:8px">Open the Industrial Automation app</li>
+          <li style="margin-bottom:8px">Open the Power Electronics 1 app</li>
           <li style="margin-bottom:8px">Click <strong>"I have a code"</strong> button</li>
           <li style="margin-bottom:8px">Enter your full name: <strong>${escapeHtml(fullName)}</strong></li>
           <li>Enter the access code above</li>
@@ -50,12 +50,12 @@ Deno.serve(async (req) => {
       </div>
       
       <p style="color:#94a3b8;line-height:1.6;margin:24px 0 0 0;font-size:13px">
-        Questions or issues? Contact us at <strong>industrialautomation@gmail.com</strong>
+        Questions or issues? Contact us at <strong>powerelectronics1@gmail.com</strong>
       </p>
       
       <div style="margin-top:24px;padding-top:16px;border-top:1px solid #334155;text-align:center">
         <p style="margin:0;color:#64748b;font-size:12px">
-          © Industrial Automation. All rights reserved.
+          © Power Electronics 1. All rights reserved.
         </p>
       </div>
     </div>`;
@@ -64,7 +64,7 @@ Deno.serve(async (req) => {
     const { error } = await supa.auth.admin.sendRawEmail({
       email: to,
       html,
-      subject: "Your Industrial Automation Access Code",
+      subject: "Your Power Electronics 1 Access Code",
     });
 
     if (error) {
