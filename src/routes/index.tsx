@@ -30,9 +30,9 @@ function Landing() {
           <div className="inline-flex items-center gap-2 rounded-full border border-secondary/40 bg-secondary/10 px-3 py-1 text-xs text-secondary mb-6">
             <Zap className="h-3 w-3" /> Built from real National Diploma past papers
           </div>
-          <img src={logo} alt="Research Methods logo" className="mx-auto h-28 w-auto mb-6 drop-shadow-[0_0_60px_rgba(99,102,241,0.55)]" />
+          <img src={logo} alt="Power Electronics 1 logo" className="mx-auto h-28 w-auto mb-6 drop-shadow-[0_0_60px_rgba(99,102,241,0.55)]" />
           <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-tight text-white">
-            Master Research Methods.<br />
+            Master Power Electronics.<br />
             <span className="text-brand-gradient">Ace your exam with confidence.</span>
           </h1>
           <p className="mt-5 max-w-2xl mx-auto text-lg text-white/80">
@@ -61,10 +61,10 @@ function Landing() {
           <Card className="p-8 md:p-12 bg-card text-card-foreground shadow-card-elev">
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-3xl font-bold mb-4">Research methods repeat across every exam.</h2>
+                <h2 className="text-3xl font-bold mb-4">Power Electronics concepts tested year after year.</h2>
                 <p className="text-muted-foreground">
-                  Sampling techniques. Ethics principles. Research design patterns. Statistical analysis methods.
-                  Data collection instruments. Report writing standards. The same concepts tested year after year.
+                  Thyristors, diodes, and rectifiers. Gate triggering and commutation. DC-DC and AC-DC conversion.
+                  Thermal management and snubber design. Protection circuits. The same exam-tested topics delivered in exam format.
                 </p>
                 <p className="mt-4 font-semibold">
                   The students who pass aren't smarter. <span className="text-brand-gradient">They've just seen the questions before.</span>
@@ -72,10 +72,10 @@ function Landing() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 {[
-                  { i: Brain, n: "250+", l: "revision cards from 5 papers" },
-                  { i: Trophy, n: "100%", l: "exam-standard answers" },
+                  { i: Brain, n: "400+", l: "exam questions with answers" },
+                  { i: Trophy, n: "100%", l: "professional LaTeX formatting" },
                   { i: Clock, n: "20 min", l: "daily revision is enough" },
-                  { i: BookOpen, n: "8", l: "research topics covered" },
+                  { i: BookOpen, n: "5", l: "exam papers covered" },
                 ].map(({ i: Icon, n, l }) => (
                   <div key={l} className="rounded-xl border border-black/20 p-4 text-center bg-white">
                     <Icon className="h-5 w-5 mx-auto text-secondary mb-2" />
@@ -169,7 +169,7 @@ function Landing() {
         </section>
       </main>
       <footer className="border-t border-border/40 mt-6 py-8 text-center text-sm text-white/60">
-        © Industrial Automation. Automate · Control · Optimize · Innovate.
+        © Power Electronics 1. Master the circuit. Control the power. Ace the exam.
       </footer>
     </div>
   );
